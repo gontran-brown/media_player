@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="fr">
+<!--  urb_ex : 
+ Affichage d'une vidéo avec la balise VIDEO 
+ et sa barre de contrôle personalisée
+-->
+ <head>
+  <title>Test contrôle Video</title>
+   <meta charset="utf-8" />  
+   <style type="text/css" media="screen"> 
+  body { overflow: hidden;}
+   #video { position:relative;background-color: #000;}
+   #controls {  display:none; opacity: 0.85; color: #fff;}
+   .control { float: left; height: 25px; width: 25px; margin-right: 5px; background-color: #001E25; text-align: center; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; }
+   .control:last-child { margin-right: 0; }
+   .control:first-child { margin-left: 10px; }
+   #play span { display: block; font-size: 0px; line-height: 0; }
+   #play.play span { width: 0; height: 0; margin: 8px 0 0 8px; border-top: 5px solid #001E25; border-left: 10px solid #fff; border-bottom: 5px solid #001E25; }
+   #play.pause span { width: 3px; height: 10px; margin: 8px auto 0; border-top: 0px; border-left: 3px solid #fff; border-bottom: 0px; border-right: 3px solid #fff; }
+   #progress { width: 190px; }
+   #progress #progress_box { float: left; width: 100px; height: 9px; border: 1px solid #777; background-color: #001E25; margin: 7px 0 0 5px; overflow:hidden; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; }
+   #progress #play_progress { display: block; width: 0px; height: 9px; background-color: #fff; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; }
+   #progress #load_progress { display: block; width: 0px; height: 9px; background-color: #777; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; }
+   #progress #play_time { float: left; margin: 7px 0 0 5px; font-size: 10px; line-height: 1; font-weight: normal; font-family: Helvetica, Arial, sans-serif;  }
+   #volume { width: 50px; }
+   #volume span { display: block; margin: 4px 0 0 5px; }
+   #volume ul { display: block; margin: 0; padding: 0; list-style: none; }
+   #volume ul li { float: left; margin: 0; padding: 0; list-style: none; width: 5px; margin-right: 2px; height: 0px; border-bottom: 18px solid #555; }
+   #volume ul li:nth-child(1) { border-bottom-width: 2px; height: 16px; }
+   #volume ul li:nth-child(2) { border-bottom-width: 4px; height: 14px; }
+   #volume ul li:nth-child(3) { border-bottom-width: 7px; height: 11px; }
+   #volume ul li:nth-child(4) { border-bottom-width: 10px; height: 8px; }
+   #volume ul li:nth-child(5) { border-bottom-width: 14px; height: 4px; }
+   #full_screen span { display: block; float: left; margin: 5px 0 0 5px; padding: 0; }
+   #full_screen span table { width: 20px; height: 20px; margin: 0; padding: 0; text-align: left; vertical-align: top; }
+   #full_screen span table td { margin: 0; padding: 0; text-align: left; vertical-align: top; }
+   #full_screen span table tr:first-child td:first-child { width: 9px; height: 9px; }
+   #full_screen .fs-corner { font-size: 0; line-height: 0; width: 0; }
+   #full_screen #fs_top_left { border: none; border-top: 6px solid #fff; border-right: 6px solid #001E25; }
+   #full_screen #fs_top_right { border: none; border-top: 6px solid #fff; border-left: 6px solid #001E25; }
+   #full_screen #fs_bottom_left { border: none; border-bottom: 6px solid #fff; border-right: 6px solid #001E25; }
+   #full_screen #fs_bottom_right { border: none; border-bottom: 6px solid #fff; border-left: 6px solid #001E25; }
+   #full_screen.fs-active #fs_top_left { border: none; border-bottom: 6px solid #fff; border-left: 6px solid #001E25; }
+   #full_screen.fs-active #fs_top_right { border: none; border-bottom: 6px solid #fff; border-right: 6px solid #001E25; }
+   #full_screen.fs-active #fs_bottom_left { border: none; border-top: 6px solid #fff; border-left: 6px solid #001E25; }
+   #full_screen.fs-active #fs_bottom_right { border: none; border-top: 6px solid #fff; border-right: 6px solid #001E25; }
+   #full_screen.fs-active span table tr:first-child td:first-child { width: 13px; height: 13px; }
+   #full_screen.fs-active span { display: block; float: left; margin: 3px 0 0 3px; padding: 0; }
+   .hidden {display:none;}
+   #caption {left: 0;text-align: center;font-family: sans-serif;font-weight: bold;font-size:.8em;color: white;text-shadow: black 1px 1px 3px;padding-bottom: .5em;}
+   #langlist {float: left;}
+   #langlist legend {font-weight: bold;}
+   #transcripts {position: absolute;color: #000;}
+   #transcripts li {display:list-item; list-style:none;}
+   #transcripts li.selectionne {background-color:yellow;}
+   #transcripts li a {cursor:pointer;}
+   div.jaws {color:yellow !important;}
+   div.mathieu {color:#fff !important;}
+   div#playback {clear:both;padding-top:20px;margin-left:100px;} 
+   .video {width:100%; text-align:center;}  
+   #video-box {margin-top:30px; }
+   #controls {height: 30px; text-align:center; margin: -34px auto 0 auto;} 
+   </style> 
+   <script type="text/javascript" >
+   <!--
+   var video;
+   var controls;
+   var playControl;
+   var progressControl;
+   var progressHolder;
+   var playProgressBar;
+   var playProgressInterval;
+   var currentTimeDisplay;
+   var durationDisplay;
+   var volumeControl;
+   var volumeDisplay;
+   var fullScreenControl;
+   var videoWasPlaying;
+   var videoIsFullScreen;
+   var videoOrigWidth;
+   var videoOrigHeight;
+    
+   window.onload = function(){
+     video = document.getElementById("video");
+     controls = document.getElementById("controls");
+     playControl = document.getElementById("play");
+     progressControl = document.getElementById("progress");
+     progressHolder = document.getElementById("progress_box");
+     playProgressBar = document.getElementById("play_progress");
+     currentTimeDisplay = document.getElementById("current_time_display");
+     durationDisplay = document.getElementById("duration_display");
+     volumeControl = document.getElementById("volume");
+     volumeDisplay = document.getElementById("volume_display");
+     fullScreenControl = document.getElementById("full_screen");
+      
+     showController();
+     positionController();
+          
+   /*  urb_ex : 
+  	Gestion du bouton 'play'
+   */
+     playControl.addEventListener("click", function(){
+      if (video.paused) {
+       playVideo();
+      } else {
+       pauseVideo();
+      }
+     }, true); // fin playControl click
+   
+   /*  urb_ex : 
+  	Gestion du 'mousedown' dans la barre de progression de la vidéo
+   */
+     progressHolder.addEventListener("mousedown", function(){
+      stopTrackingPlayProgress();
+   
+      if (video.paused) {
+       videoWasPlaying = false;
+      } else {
+       videoWasPlaying = true;
+       video.pause();
+      }
+   
+      blockTextSelection();
+      document.onmousemove = function(e) {
+       setPlayProgress(e.pageX);
+      }
+   
+      document.onmouseup = function() {
+       unblockTextSelection();
+       document.onmousemove = null;
+       document.onmouseup = null;
+       if (videoWasPlaying) {
+        video.play();
+        trackPlayProgress();
+       }
+      }
+    
+     }, true);  // fin progressHolder mousedown
+   
+   /*  urb_ex : 
+  	Gestion du 'mouseup' dans la barre de progression de la vidéo
+   */
+     progressHolder.addEventListener("mouseup", function(e){
+      setPlayProgress(e.pageX);
+     }, true); // fin progressHolder mouseup
+   
+   /*  urb_ex : 
+  	Gestion du 'mousedown' dans la zone de traitement volume
+   */
+     volumeControl.addEventListener("mousedown", function(){
+      blockTextSelection();
+      document.onmousemove = function(e) {
+        setVolume(e.pageX);
+      }
+      document.onmouseup = function() {
+       unblockTextSelection();
+       document.onmousemove = null;
+       document.onmouseup = null;
+      }
+     }, true);  // fin volumeControl mousedown
+   
+   /*  urb_ex : 
+  	Gestion du 'mousedown' dans la zone de traitement volume
+   */
+     volumeControl.addEventListener("mouseup", function(e){
+      setVolume(e.pageX);
+     }, true); // fin volumeControl mouseup
+   
+     updateVolumeDisplay();
+   
+   /*  urb_ex : 
+  	Gestion du bouton 'plein écran'
+   */
+     fullScreenControl.addEventListener("click", function(){
+	  if (!videoIsFullScreen) {
+       fullScreenOn();
+      } else {
+       fullScreenOff();
+      }
+     }, true); // fin fullScreenControl click
+	 
+   /*  urb_ex : 
+  	Gestion de l'évenement 'timeupdate' de la vidéo
+   */
+     video.addEventListener("timeupdate", function(){
+	  timeupdate();
+     }, true);
+   }  // fin window.onload
+   
+   function playVideo(){
+     video.play();
+     playControl.className = "pause control";
+     trackPlayProgress();
+   }
+   
+   function pauseVideo(){
+     video.pause();
+     playControl.className = "play control";
+     stopTrackingPlayProgress();
+   }
+   
+   function positionController(){
+     controls.style.left = "0px";
+     controls.style.width = video.offsetWidth + "px";
+     controls.style.position= "relative";
+     sizeProgressBar();
+   }
+   
+   function showController(){
+     controls.style.display = "block";
+   }
+   
+   function hideController(){
+     controls.style.display = "none";
+   }
+   
+   function sizeProgressBar(){
+     progressControl.style.width = (controls.offsetWidth - 130) + "px";
+     progressHolder.style.width = (progressControl.offsetWidth - 80) + "px";
+     updatePlayProgress();
+   }
+   
+   function trackPlayProgress(){
+     playProgressInterval = setInterval(updatePlayProgress, 33);
+   }
+   
+   function stopTrackingPlayProgress(){
+     clearInterval(playProgressInterval);
+   }
+   
+   function updatePlayProgress(){
+     playProgressBar.style.width = ((video.currentTime / video.duration) * (progressHolder.offsetWidth - 2)) + "px";
+     updateTimeDisplay();
+   }
+   
+   function setPlayProgress(clickX) {
+     var newPercent = Math.max(0, Math.min(1, (clickX - findPosX(progressHolder)) / progressHolder.offsetWidth));
+     video.currentTime = newPercent * video.duration
+     playProgressBar.style.width = newPercent * (progressHolder.offsetWidth - 2)  + "px";
+     updateTimeDisplay();
+   }
+   
+   function updateTimeDisplay(){
+     currentTimeDisplay.innerHTML = formatTime(video.currentTime);
+     if (video.duration) durationDisplay.innerHTML = formatTime(video.duration);
+   }
+   
+   function setVolume(clickX) {
+     var newVol = (clickX - findPosX(volumeControl)) / volumeControl.offsetWidth;
+     if (newVol > 1) {
+    newVol = 1;
+     } else if (newVol < 0) {
+    newVol = 0;
+     }
+     video.volume = newVol;
+     updateVolumeDisplay();
+   }
+   
+   function updateVolumeDisplay(){
+     var volNum = Math.floor(video.volume * 6);
+     for(var i=0; i<6; i++) {
+    if (i < volNum) {
+      volumeDisplay.children[i].style.borderColor = "#fff";
+    } else {
+      volumeDisplay.children[i].style.borderColor = "#555";
+    }
+     }
+   }
+   
+   function fullScreenOn(){
+     videoIsFullScreen = true;
+     videoOrigWidth = video.offsetWidth;
+     videoOrigHeight = video.offsetHeight;
+     controlsOrigTop = controls.style.top;
+     controlsOrigMarginTop = controls.style.marginTop;
+     controlsOrigMarginLeft = controls.style.marginLeft;
+   
+     video.style.width = window.innerWidth + "px";
+     video.style.height = window.innerHeight + "px";
+     video.style.position = "fixed";
+     video.style.left = 0;
+     video.style.top = 0;
+     positionController();
+     controls.style.position = "fixed";
+     controls.style.top = (video.offsetHeight - controls.offsetHeight - 2) + "px";
+     controls.style.marginTop = 0;
+     controls.style.marginLeft = "0px";
+     fullScreenControl.className = "fs-active control";
+   }
+   
+   function fullScreenOff(){
+     videoIsFullScreen = false;
+     video.style.width = videoOrigWidth + "px";
+     video.style.height = videoOrigHeight + "px";
+     video.style.position = "static";
+     controls.style.top = 0;
+     positionController();
+     controls.style.position = "relative";
+       
+     controls.style.marginTop = "-34px";
+     controls.style.marginLeft = "auto";
+      fullScreenControl.className = "control";
+   }
+   
+   function blockTextSelection(){
+     document.body.focus();
+     document.onselectstart = function () { return false; };
+   }
+   
+   function unblockTextSelection(){
+     document.onselectstart = function () { return true; };
+   }
+
+   function formatTime(seconds) {
+     seconds = Math.round(seconds);
+     minutes = Math.floor(seconds / 60);
+     minutes = (minutes >= 10) ? minutes : "0" + minutes;
+     seconds = Math.floor(seconds % 60);
+     seconds = (seconds >= 10) ? seconds : "0" + seconds;
+     return minutes + ":" + seconds;
+   }
+   
+   function findPosX(obj) {
+     var curleft = obj.offsetLeft;
+     while(obj = obj.offsetParent) {
+    curleft += obj.offsetLeft;
+     }
+     return curleft;
+   }
+ 
+   function timeupdate() {
+     var v = document.querySelector('video'); 
+     var now = v.currentTime; 
+    } 
+   -->
+  </script>
+ </head>
+
+ <body>
+  <div class="video">
+    <div id="video_box"> 
+   <!--  urb_ex : 
+	L'attribut "preload" autorise le préchargement de la video
+	L'attribut "poster" permet d'afficher une image tant que la vidéo n'est
+	pas en cours.
+   -->
+      <video id="video" width="360" height="288" preload="true"  >
+	<!--  urb_ex : 
+	 Ici on définit différents formats de fichiers vidéo.
+	 Le navigateur choisira le premier format qui lui convient
+	-->
+        <source src="test.flv" />
+       </video>
+	<!--  urb_ex : 
+	 La barre de contrôle personalisée
+	-->
+      <div id="controls"> 
+        <div id="play" class="play control"> 
+        <span></span> 
+      </div> 
+      <div id="progress" class="control"> 
+        <div id="progress_box"> 
+          <span id="load_progress"><span id="play_progress"></span></span> 
+        </div> 
+        <div id="play_time"> 
+          <span id="current_time_display">00:00</span> / <span id="duration_display">00:00</span> 
+        </div> 
+      </div> 
+      <div id="volume" class="control"> 
+        <span> 
+         <ul id="volume_display"> 
+          <li></li><li></li><li></li><li></li><li></li><li></li> 
+         </ul> 
+        </span> 
+      </div> 
+      <div id="full_screen" class="control"> 
+       <span> 
+        <table border="0" cellpadding="0" cellspacing="0"> 
+          <tr> 
+            <td><div id="fs_top_left" class="fs-corner"></div></td> 
+            <td><div id="fs_top_right" class="fs-corner"></div></td> 
+          </tr> 
+         <tr> 
+            <td><div id="fs_bottom_left" class="fs-corner"></div></td> 
+            <td><div id="fs_bottom_right" class="fs-corner"></div></td> 
+         </tr> 
+        </table> 
+      </span> 
+     </div> 
+  </div>  
+ </div> </div>
+
+</body>
+</html>

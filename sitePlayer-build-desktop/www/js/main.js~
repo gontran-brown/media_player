@@ -1,0 +1,5 @@
+window.onload = function(event){
+    document.querySelector("#btn-play").addEventListener("click",function(e){
+
+    },false);
+}

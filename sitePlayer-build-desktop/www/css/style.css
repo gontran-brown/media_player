@@ -1,0 +1,10 @@
+body{ overflow: hidden;
+}
+
+#video{ position:relative;
+background-color: #000;
+}
+
+#tableau {
+border: 1px solid black;
+}
