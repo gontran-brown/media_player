@@ -1,32 +1,49 @@
-<!DOCTYPE html>
-<html lang="fr">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
 <head>
-<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="language" content="en" />
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+ 
   <title>ApplicationWeb</title>
-   <meta charset="utf-8">
-
-
+ <link rel="stylesheet" type="text/css" href="css/style.css" media="screen" />
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
 
- <style type="text/css" src="css/style.css"></style>
-
 </head>
-
 <body>
-          <video id="video" width="360" height="288" >
-
-          <source src="video.mp4" type="video/mp4" />
-          <source src="video.webm" type="video/webm" />
-          <source src="video.ogv" type="video/ogg" />
+	<div class="Player" id="content">
+          <video id="video" src = "test2.ogv" width="360" height="288" >
+                 
+         
+<!--
+         
+          <source src="*.mp4" type="video/mp4" />
+          <source src="test.flv" type="video/flv" />
+          <source src="*.webm" type="video/webm" />
+          <source src="*.ogv" type="video/ogg" />
+         -->
             Le navigateur ne supporte pas la balise video</video>
+	<!--	<div id="bouton">
 
-
-<input type="button" id="btn-play" value="play" />
-	  <input type="button" id="btn-pause" value="pause" />
-	  <input type="button" id="btn-stop" value="stop" />
-	  <input type="button" id="btn-cut" value="cut" />
-	
+			<input type="button" id="btn-play" value="play" />
+			<input type="button" id="btn-pause" value="pause" />
+			<input type="button" id="btn-stop" value="stop" />
+			<input type="button" id="btn-cut" value="cut" />
+		</div>-->
+		
+		<div class="ghinda-video-controls">
+	<a class="video-play" title="Play/Pause"></a>
+	<div class="video-seek"></div>
+	<div class="video-timer">00:00</div>
+	<div class="volume-box">
+		<div class="volume-slider"></div>
+		<a class="volume-button" title="Mute/Unmute"></a>
+	</div>
+</div>
+		
+	</div>
         <table id="tableau" class="tableau_debut" >
 		<thead>
 			<tr>
@@ -40,9 +57,8 @@
 		<tbody>
 			<tr>
 				<td colspan="4"></td>
-				
 			</tr>
 		<tbody>
 	</table> 
 	</body>
-</html>
+</html

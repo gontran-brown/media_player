@@ -1,17 +1,18 @@
 ;(
     function($) {
         $(document).ready(function(){
+           
             $("#btn-play").click(function(){
-                    $("#video").play();
+                html(load(document.querySelector("#video")));
                     //$("#debut"));
             });
 
             $("#btn-pause").click(function(){
-                    (document.querySelector("#video")).pause();
+                    //(document.querySelector("#video")).pause();
             });
 
             $("#btn-stop").click(function(){
-                    (document.querySelector("#video")).onload();
+                    //(document.querySelector("#video")).onload();
             });
 
             /*$("#btn-cut").click(function(){
