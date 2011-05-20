@@ -1,0 +1,21 @@
+<?php
+
+if(isset($_POST['debut'])  ){
+  $deb =$tab[$_POST['debut'] ];
+}
+else{
+  echo 'pas de donnee dans la partie debut';
+}
+if(isset($_POST['fin'])){
+  $end = $_POST['fin'];
+}
+if(isset($_POST['subtitle'])){
+  $sub = $_POST['subtitle'];
+		}
+echo 'debut :' .$deb.'fin : '.$fin.'soustitre :'.$sub;
+	}
+
+//extract($_POST);//les champs du formulaire
+
+?>
+
