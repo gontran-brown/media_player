@@ -35,11 +35,13 @@ if (isset($_POST)){
 
         // Create the rest of your XML Data...
         $xml = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\r\n";
-        $xml .= "<subtitle>\r\n";
+        $xml .= "<video>\r\n";
         foreach($_POST as $key=>$val){
-            $xml .= "\t<".$key.">".$val."</".$key.">\r\n";
+            if ($key != 'filename'){
+                $xml .= "\t<".$key.">".$val."</".$key.">\r\n";
+            }
         }
-        $xml .= "</subtitle>";
+        $xml .= "</video>";
         downloader($xml, $_POST['filename'].".xml", "application/xml");
     }
 }
