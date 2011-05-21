@@ -97,10 +97,10 @@ $(document).ready(function() {
             $form_subtitle_table = $form_subtitle.find("table tbody");
             if(button == 0){
                 if (($form_subtitle_table.length == 0) && ($time != null)){
-                    $form_subtitle.prepend('<table><tbody><tr><td><input type="text" name="debut'+i+'" value="'+$time+'"></input></td><td></td><td></td><td></td></tr></tbody></table>');
+                    $form_subtitle.prepend('<table><tbody><tr><td><input type="text" name="debut'+i+'" value="'+$time+'"></input></td><td></td><td></td></tr></tbody></table>');
                 }
                 else {
-                    $form_subtitle_table.prepend('<tr><td><input type="text" name="debut'+i+'" value="'+$time+'"></input></td><td></td><td></td><td></td></tr>');
+                    $form_subtitle_table.prepend('<tr><td><input type="text" name="debut'+i+'" value="'+$time+'"></input></td><td></td><td></td></tr>');
                 }
             }
             else{
