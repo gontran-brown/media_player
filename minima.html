@@ -10,18 +10,16 @@
 		<link rel="stylesheet" type="text/css" href="css/player.css" />
 		<!--[if IE]><link rel="stylesheet" type="text/css" href="css/player_ie.css" /><![endif]-->
 		<script type="text/javascript">
-			
-			
-		
+
 		$(document).ready(function() {
 			$('#formulaire').validate();
-		
-			
+
+
 			$("#formulaire").submit(function(){
 				var xhrObj=null;
 				if(window.XMLHttpRequest)
 					xhrObj=new XMLHttpRequest();//Firefox
-				else 
+				else
 					if(window.ActiveXObject)
 						xhrObj=new ActiveXObject("Microsoft.XMLHTTP");//Internet Explorer
 					else{//XMLHttpRequest non supporté par le navigateur
@@ -37,10 +35,10 @@
 				xhrObj.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 				f=document.getElementById('formulaire');
 				var data="donnee="+f.debut.value+f.fin.value+f.subtitle.value;
-				  
-			});	
-			
-	});		
+
+			});
+
+	});
 				/*	$.ajax({
 						   //type :"POST",
 						   //target : '',
@@ -51,7 +49,7 @@
 								alert('Load  ,...');
 							}
 						});
-				
+
 					<!--var player = $("#player").mediaplayer({
 					showPlaylist:false,
 					file:"../videos/5_SG.flv",
@@ -79,90 +77,90 @@
 						media:"#player_mediadisplay",
 						control:"#player_mediacontrol",
 						mediaRegion:"#player_mediaregion"
-					}			
+					}
 				});
 				$("#player_loading").hide();
 			});
 			-->*/
 		</script>
 	</head>
-	<body>
-		<h2>Open Standard Media (OSM) Player</h2>
-		<div id="player_mediaplayerloading" style="width:550px;height:400px;">
-			<img src="templates/default/images/busy.gif" />
-		</div>
-		<div id="player" class="player_mediashowtitle player_mediaplayerdialog player_ui-dialog player_ui-widget player_ui-widget-content player_ui-corner-all" style="width:550px;height:400px;">
-			<div id="player_mediatitlebar" class="player_ui-widget-header player_ui-corner-top player_ui-helper-clearfix">
-				<div id="player_mediatitlelinks">
-					<div id="player_mediatitlelinksinner">
-						<a href="#fullscreen" id="player_mediafullbutton" class="player_ui-state-default player_ui-corner-all">
-							<span class="player_ui-icon player_ui-icon-extlink"></span>
-						</a>
-					</div>
-				</div>
-			</div>
-			<div id="player_mediaplayer" class="player_ui-helper-clearfix">
-				<div id="player_medianode">
-					<div id="player_mediaregion">
-						<div id="player_mediabusy">
-							<img src="templates/default/images/busy.gif" />
-						</div>
-						<div id="player_mediaplay">
-							<img src="templates/default/images/play.png" />
-						</div>
-						<div id="player_mediapreview"></div>
-						<div id="player_mediadisplay"></div>
-					</div>
-				</div>
-				<div id="player_mediacontrol" class="player_ui-widget-header player_ui-corner-bottom">
-					<div id="player_mediacontrolleft">
-						<div id="player_mediaplaypause" class="player_ui-state-default player_ui-corner-all">
-							<div class="on">
-								<span class="player_ui-icon player_ui-icon-play"></span>
-							</div>
-							<div class="off" style="display:none">
-								<span class="player_ui-icon player_ui-icon-pause"></span>
-							</div>
-						</div>
-						<div id="player_mediacurrenttime">00:00</div>
-					</div>
-					<div id="player_mediacontrolright">
-						<div id="player_mediatotaltime">00:00</div>
-						<div id="player_mediamute" class="player_ui-state-default player_ui-corner-all">
-							<div class="on" style="display:none">
-								<span class="player_ui-icon player_ui-icon-volume-off"></span>
-							</div>
-							<div class="off">
-								<span class="player_ui-icon player_ui-icon-volume-on"></span>
-							</div>
-						</div>
-						<div id="player_mediavolumebar" class="player_ui-state-default">
-							<div id="player_mediavolumehandle">
-								<span class="player_ui-icon player_ui-icon-bullet"></span>
-							</div>
-							<div id="player_mediavolumeupdate" class="player_ui-state-active"></div>
-						</div>
-					</div>
-					<div id="player_mediacontrolcenter">
-						<div id="player_mediaseekbar" class="player_ui-state-default">
-							<div id="player_mediaseekhandle">
-								<span class="player_ui-icon player_ui-icon-bullet"></span>
-							</div>
-							<div id="player_mediaseekupdate" class="player_ui-state-active"></div>
-							<div id="player_mediaseekprogress" class="player_ui-state-hover"></div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!--
-		<div id="tableau" width="100px">
-		<table border= "" cellpadding="1">
-		<caption>Tableau des jeux de temps</caption>
-		<tr>
-		</tr>
-		</table>
-		</div>
-		-->
-	</body>
+  <body>
+      <h2>Open Standard Media (OSM) Player</h2>
+      <div id="player_mediaplayerloading" style="width:550px;height:400px;">
+          <img src="templates/default/images/busy.gif" />
+      </div>
+      <div id="player" class="player_mediashowtitle player_mediaplayerdialog player_ui-dialog player_ui-widget player_ui-widget-content player_ui-corner-all" style="width:550px;height:400px;">
+          <div id="player_mediatitlebar" class="player_ui-widget-header player_ui-corner-top player_ui-helper-clearfix">
+              <div id="player_mediatitlelinks">
+                  <div id="player_mediatitlelinksinner">
+                      <a href="#fullscreen" id="player_mediafullbutton" class="player_ui-state-default player_ui-corner-all">
+                          <span class="player_ui-icon player_ui-icon-extlink"></span>
+                      </a>
+                  </div>
+              </div>
+          </div>
+          <div id="player_mediaplayer" class="player_ui-helper-clearfix">
+              <div id="player_medianode">
+                  <div id="player_mediaregion">
+                      <div id="player_mediabusy">
+                          <img src="templates/default/images/busy.gif" />
+                      </div>
+                      <div id="player_mediaplay">
+                          <img src="templates/default/images/play.png" />
+                      </div>
+                      <div id="player_mediapreview"></div>
+                      <div id="player_mediadisplay"></div>
+                  </div>
+              </div>
+              <div id="player_mediacontrol" class="player_ui-widget-header player_ui-corner-bottom">
+                  <div id="player_mediacontrolleft">
+                      <div id="player_mediaplaypause" class="player_ui-state-default player_ui-corner-all">
+                          <div class="on">
+                              <span class="player_ui-icon player_ui-icon-play"></span>
+                          </div>
+                          <div class="off" style="display:none">
+                              <span class="player_ui-icon player_ui-icon-pause"></span>
+                          </div>
+                      </div>
+                      <div id="player_mediacurrenttime">00:00</div>
+                  </div>
+                  <div id="player_mediacontrolright">
+                      <div id="player_mediatotaltime">00:00</div>
+                      <div id="player_mediamute" class="player_ui-state-default player_ui-corner-all">
+                          <div class="on" style="display:none">
+                              <span class="player_ui-icon player_ui-icon-volume-off"></span>
+                          </div>
+                          <div class="off">
+                              <span class="player_ui-icon player_ui-icon-volume-on"></span>
+                          </div>
+                      </div>
+                      <div id="player_mediavolumebar" class="player_ui-state-default">
+                          <div id="player_mediavolumehandle">
+                              <span class="player_ui-icon player_ui-icon-bullet"></span>
+                          </div>
+                          <div id="player_mediavolumeupdate" class="player_ui-state-active"></div>
+                      </div>
+                  </div>
+                  <div id="player_mediacontrolcenter">
+                      <div id="player_mediaseekbar" class="player_ui-state-default">
+                          <div id="player_mediaseekhandle">
+                              <span class="player_ui-icon player_ui-icon-bullet"></span>
+                          </div>
+                          <div id="player_mediaseekupdate" class="player_ui-state-active"></div>
+                          <div id="player_mediaseekprogress" class="player_ui-state-hover"></div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <!--
+      <div id="tableau" width="100px">
+          <table border= "" cellpadding="1">
+              <caption>Tableau des jeux de temps</caption>
+              <tr>
+              </tr>
+          </table>
+      </div>
+      -->
+  </body>
 </html>
