@@ -1,11 +1,11 @@
 <?php
-/*
+
     if(isset($_POST)) {
         foreach($_POST as $key=>$val) {
             echo $key.'=>'.$val.'<p>';
         }
     }
- */
+/*
     if(empty($_POST['formulaire'])){
 		$form = $_POST['formulaire'];
 		echo 'mon tableau est bien rempli il me <br/> suffit de recuperer tout les valeurs<br/>';
@@ -32,5 +32,5 @@
 	}
 else{
 		echo 'je n\'arrive pas a atteindre les donnees du tableau <br/>';
-	}
+}*/
 ?>
