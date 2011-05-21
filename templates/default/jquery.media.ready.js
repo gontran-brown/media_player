@@ -29,51 +29,7 @@ var time = $("#player_mediacurrenttime").text().trim();
                                                control:"#player_mediacontrol",
                                                mediaRegion:"#player_mediaregion"
                                        }
-                               });
-    
-	//~ var content = $('#mon_tableau_de_donnee');
-	
-	 //~  function submitForm(){  
-		 //~ var xml;
-		 //~ try{
-			 //~ xml = new ActiveXObject('Msxml2.XMLHTTP');
-		 //~ }
-		 //~ catch (e){
-			 //~ try{
-				 //~ xml = new ActiveXObject('Microsoft.XMLHTTP');
-		    //~ }
-			//~ catch (e2){
-				//~ try {  xhr = new XMLHttpRequest();
-				//~ }
-				//~ catch (e3){
-					//~ xhr = false;
-				//~ }
-			//~ }
-			//~ }
-			//~ 
-			//~ xml.onreadystatechange  = function(){
-				//~ if(xml.readyState  == 4){
-					//~ if(xml.status  == 200)
-					  //~ document.formulaire.mon_tableau_de_donnee="Received:"  + xml.responseText; 
-					//~ else 
-					   //~ document.formulaire.mon_tableau_de_donnee="Error code " + xml.status;
-			   //~ }
-		//~ }; 
-	//~ 
-	   //~ xml.open( "GET", "trad.xml",true); 
-	   //~ consol.log(content);
-	   //~ //xml.send(content);
-	   //~ xml.send(null);
-	   //~ 
-	   //~ var file = $.ajax({
-		   //~ target : '#mon_tableau_de_donnee',
-		   //~ url : 'minima.html',
-			//~ async :false
-		//~ }).responseText;
-		//~ consol.log(file);
-//~ } 
-			
-		  
+                               });		  
    
    $("#player_loading").hide();
 
