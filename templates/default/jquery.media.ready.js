@@ -80,6 +80,10 @@ $(document).ready(function() {
     $this.find("#player_mediaplaypause").click(function(){
         var $form_subtitle = $this.next("form#subtitle");
         if ($form_subtitle.length == 0){
+            var $help = $this.next("div.help");
+            if ($help.length > 0){
+                $help.remove();
+            }
             $this.after('<form id="subtitle" method ="POST" action="generate_xml.php" enctype="multipart/form-data"><input type="hidden" name="filename" value="mes_soustitres"></input><input type="submit" value="Envoyer" type="submit"></form>');
             $form_subtitle = $this.next("form#subtitle");
         }
