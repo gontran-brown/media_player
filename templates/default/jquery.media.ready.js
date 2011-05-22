@@ -112,39 +112,37 @@ $(document).ready(function() {
 >>>>>>> 21d46181a7ecc16fefec1754e8109c2ef24a39c6
 
     var i=0;
+    var line=1;
+    var currentTime=0;
     $this.find("#player_mediaplaypause").click(function(){
         var $form_subtitle = $this.next("form#subtitle");
         if ($form_subtitle.length == 0){
-            $this.after('<form id="subtitle" method ="POST" action="serveur.php" enctype="multipart/form-data"><input type="submit" value="Envoyer" type="submit"></form>');
+            var $help = $this.next("div.help");
+            if ($help.length > 0){
+                $help.remove();
+            }
+            $this.after('<form id="subtitle" method ="POST" action="generate_xml.php" enctype="multipart/form-data"><input type="hidden" name="filename" value="mes_soustitres"></input><input type="submit" value="Envoyer" type="submit"></form>');
+            $form_subtitle = $this.next("form#subtitle");
+        }
+        var button = i%2;
+        i++;
+        currentTime = $this.find("#player_mediacurrenttime").text().trim();
+        //console.log("bouton:"+button+";temps:"+currentTime);
+        $form_subtitle_table = $form_subtitle.find("table tbody");
+        if(button == 0){
+            if (($form_subtitle_table.length == 0) && (currentTime != null)){
+                $form_subtitle.prepend('<table><thead><tr><th>Temps début :</th><th>Temps fin :</th><th>Sous titre :</th></tr></thead><tbody><tr><td><input type="text" name="debut'+line+'" value="'+currentTime+'"></input></td><td></td><td></td></tr></tbody></table>');
+            }
+            else {
+                $form_subtitle_table.prepend('<tr><td><input type="text" name="debut'+line+'" value="'+currentTime+'"></input></td><td></td><td></td></tr>');
+            }
         }
         else{
-            var button = 0;
-
-            if (i%2 == 0){
-                button = 0;
-            }
-            else{
-                button = 1;
-            }
-
-            i++;
-            var $time = $this.find("#player_mediacurrenttime").text().trim();
-            console.log($time)
-
-            $form_subtitle_table = $form_subtitle.find("table tbody");
-            if(button == 0){
-                if (($form_subtitle_table.length == 0) && ($time != null)){
-                    $form_subtitle.prepend('<table><tbody><tr><td><input type="text" name="debut'+i+'" value="'+$time+'"></input></td><td></td><td></td></tr></tbody></table>');
-                }
-                else {
-                    $form_subtitle_table.prepend('<tr><td><input type="text" name="debut'+i+'" value="'+$time+'"></input></td><td></td><td></td></tr>');
-                }
-            }
-            else{
-                console.log('si button different de 0');
-                if ($time != null){
-                    $('#debut').after($('<input type="text" name="subtitle'+i+'"></input>'));
-                    $('#debut').after($('<input type="text" name="fin'+i+'" value="'+$time+'"></input>'));
+            if (currentTime != null){
+                if ($form_subtitle_table.length > 0){
+                    $form_subtitle_table.find("tr:first-child td:empty:first").append('<input type="text" name="fin'+line+'" value="'+currentTime+'"></input>');
+                    $form_subtitle_table.find("tr:first-child td:empty:first").append('<input type="text" name="subtitle'+line+'"></input>');
+                    line++;
                 }
             }
         }
