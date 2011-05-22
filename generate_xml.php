@@ -36,9 +36,20 @@ if (isset($_POST)){
         // Create the rest of your XML Data...
         $xml = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\r\n";
         $xml .= "<video>\r\n";
+
+        $line = "";
         foreach($_POST as $key=>$val){
             if ($key != 'filename'){
-                $xml .= "\t<".$key.">".$val."</".$key.">\r\n";
+                if (preg_match("#subtitle\d+#", $key)){
+                    if (!empty($val)){
+                        $line .= "\t<".$key.">".$val."</".$key.">\r\n";
+                        $xml .= $line;
+                    }
+                    $line = "";
+                }
+                else{
+                    $line .= "\t<".$key.">".$val."</".$key.">\r\n";
+                }
             }
         }
         $xml .= "</video>";
