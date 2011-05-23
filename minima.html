@@ -8,49 +8,7 @@
         <script type="text/javascript" src="templates/default/jquery.media.ready.js"></script>
         <script type="text/javascript" src="templates/default/jquery.validate.js"></script>
         <link rel="stylesheet" type="text/css" href="css/player.css" />
-        <!--[if IE]><link rel="stylesheet" type="text/css" href="css/player_ie.css" /><![endif]
-        $.ajax({
-        type :"POST",
-        target : '',
-        url : 'submit.html',
-        async :false
-        success : function(data){
-        $.('.result').html(data);
-        alert('Load  ,...');
-        }
-        });
-
-        var player = $("#player").mediaplayer({
-        showPlaylist:false,
-        file:"../videos/5_SG.flv",
-        image:"videos/urbilog.png",
-        prefix:"player_",
-        ids: {
-        loading:"#player_mediaplayerloading",
-        player:"#player_mediaplayer",
-        titleBar:"#player_mediatitlebar",
-        node:"#player_medianode",
-        currentTime:"#player_mediacurrenttime",
-        totalTime:"#player_mediatotaltime",
-        playPause:"#player_mediaplaypause",
-        seekUpdate:"#player_mediaseekupdate",
-        seekProgress:"#player_mediaseekprogress",
-        seekBar:"#player_mediaseekbar",
-        seekHandle:"#player_mediaseekhandle",
-        volumeUpdate:"#player_mediavolumeupdate",
-        volumeBar:"#player_mediavolumebar",
-        volumeHandle:"#player_mediavolumehandle",
-        mute:"#player_mediamute",
-        busy:"#player_mediabusy",
-        preview:"#player_mediapreview",
-        play:"#player_mediaplay",
-        media:"#player_mediadisplay",
-        control:"#player_mediacontrol",
-        mediaRegion:"#player_mediaregion"
-        }
-        });
-        $("#player_loading").hide();
-        });-->
+       
     </head>
     <body>
         <h2>Open Standard Media (OSM) Player</h2>
