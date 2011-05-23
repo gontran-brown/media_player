@@ -31,7 +31,7 @@ $(document).ready(function() {
         }
     });
 
-    //$this.find("#player_loading").hide();
+
 
     var i=0;
     var line=1;
