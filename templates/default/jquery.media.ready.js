@@ -31,7 +31,7 @@ $(document).ready(function() {
         }
     });
 
-    $this.find("#player_loading").hide();
+    //$this.find("#player_loading").hide();
 
     var i=0;
     var line=1;
@@ -62,6 +62,8 @@ $(document).ready(function() {
         else{
             if (currentTime != null){
                 if ($form_subtitle_table.length > 0){
+                //dans la ligne du <tr><td id = debut> chercher si existe une <td id fin>
+                //si non en creer un si oui passer au td suivant id = subtitle
                     $form_subtitle_table.find("tr:first-child td:empty:first").append('<input type="text" name="fin'+line+'" value="'+currentTime+'"></input>');
                     $form_subtitle_table.find("tr:first-child td:empty:first").append('<input type="text" name="subtitle'+line+'"></input>');
                     line++;
