@@ -31,9 +31,7 @@ $(document).ready(function() {
         }
     });
 
-
-
-    var i=0;
+	var i=0;
     var line=1;
     var currentTime=0;
     $this.find("#player_mediaplaypause").click(function(){
@@ -43,7 +41,7 @@ $(document).ready(function() {
             if ($help.length > 0){
                 $help.remove();
             }
-            $this.after('<form id="subtitle" method ="POST" action="generate_xml.php" enctype="multipart/form-data"><input type="hidden" name="filename" value="mes_soustitres"></input><input type="submit" value="Envoyer" type="submit"></form>');
+            $this.after('<form id="subtitle" method ="POST" action="generate_xml.php" enctype="multipart/form-data"><input type="hidden" name="filename" value="mes_soustitres"></input><input type="submit" value="Envoyer"></form>');
             $form_subtitle = $this.next("form#subtitle");
         }
         var button = i%2;
