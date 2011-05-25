@@ -72,11 +72,10 @@ $(document).ready(function() {
     var $media = $this.find("#player_mediatitlebar");
 	$media.find("#player_mediamaxbutton").click(function(){
 		console.log("open playlist");
-		 $(this).attr("href","file://");
-		 //~ $(this).attr("href");
-		  //~ $(this).attr("file://");
-		 //~ $(this).attr("href","/var/www/html/soumia/osmplayer/videos/");
-		 //~ $(this).attr("href ='/var/www/html/soumia/osmplayer/videos/'");
+		 //~ $(this).attr('href = "javascript:window.open(\"../videos/\",\"ouvrir fichier\""');
+		 $this.after('<form action ="upload.php" method ="post" enctype="multipart/form-data">'+
+		 '<input type = "hidden" name ="MAX_FILE_SIZE" value = "900000000"/><input type="file" name = "document"/><input type="submit" value = "Playlist"/>');
+		 		 
 		});
 		//~ Function(){ $(this).attr( ton element ) }
 		
