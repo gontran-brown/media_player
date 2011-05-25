@@ -10,6 +10,7 @@
     <script type="text/javascript" src="templates/default/jquery.validate.js"></script>
 -->
     <link rel="stylesheet" type="text/css" href="css/player.css" />
+<!--
     <script type="text/javascript">
       $(function() {
       $("#mediaplayer").mediaplayer({
@@ -17,6 +18,7 @@
       });
       });
     </script>
+-->
   </head>
   <body>
     <h2> Media Player Urbilog</h2>
@@ -27,25 +29,24 @@
       <div id="player_mediatitlebar" class="player_ui-widget-header player_ui-corner-top player_ui-helper-clearfix">
         <div id="player_mediatitlelinks">
           <div id="player_mediatitlelinksinner">
-<!--
-			<input type="file" name = "upload"></input>
--->            <a href="#maximize" id="player_mediamaxbutton" class="player_ui-state-default player_ui-corner-all">
+
+            <a href="#maximize" id="player_mediamaxbutton" class="player_ui-state-default player_ui-corner-all">
 				<span class="player_ui-icon player_ui-icon-arrow-4-diag"></span>
-			</a>			
+				</a>
           </div>
         </div>
       </div>
       <div id="player_mediaplayer" class="player_ui-helper-clearfix">
         <div id="player_medianode">
           <div id="player_mediaregion">
-                        <div id="player_mediabusy">
-                          <img src="templates/default/images/busy.gif" />
-                        </div>
-                        <div id="player_mediaplay">
-                          <img src="templates/default/images/play.png" />
-                        </div>
-                        <div id="player_mediapreview"></div>
-                        <div id="player_mediadisplay"></div>
+			<div id="player_mediabusy">
+			  <img src="templates/default/images/busy.gif" />
+			</div>
+			<div id="player_mediaplay">
+			  <img src="templates/default/images/play.png" />
+			</div>
+			<div id="player_mediapreview"></div>
+			<div id="player_mediadisplay"></div>
           </div>
         </div>
         <div id="player_mediacontrol" class="player_ui-widget-header player_ui-corner-bottom">
