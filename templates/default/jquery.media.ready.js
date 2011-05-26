@@ -41,7 +41,9 @@ $(document).ready(function() {
             if ($help.length > 0){
                 $help.remove();
             }
-            $this.after('<form id="subtitle" method ="POST" action="generate_xml.php" enctype="multipart/form-data"><input type="text" name="filename" value="mes_soustitres"></input><input  value="Envoyer" type="submit"></form>');
+            $this.after('<form id="subtitle" method ="POST" action="generate_xml.php" enctype="multipart/form-data">'+
+            '<input type="text" name="filename" value="mes_soustitres"></input>'+
+            '<input  value="Envoyer" type="submit"></form>');
             $form_subtitle = $this.next("form#subtitle");
         }
         var button = i%2;
@@ -73,13 +75,14 @@ $(document).ready(function() {
 	$media.find("#player_mediamaxbutton").click(function(){
 		console.log("open playlist");
 		 
-		 $this.after('<form action ="upload.php" method ="post" enctype="multipart/form-data">'+
-		 '<input type = "hidden" name ="MAX_FILE_SIZE" value = "900000000"/><input type="file" name = "document"/><input type="submit" value = "Playlist"/></form>');
+		 $this.after('<form id="upload" method ="POST" action ="upload.php" enctype="multipart/form-data">'+
+		 '<input type = "hidden" name ="MAX_FILE_SIZE" value = "900000000"/><input type="file" name ="document"></input><input type="submit" value = "Playlist"></form>');
 		 		  //~ $this.mediaplayer.file = $this.find("input").attr("value"); ;
 		 		
 		});
 		function submit(){
 			 $this.mediaplayer.file = $this.find('input[name|="upload"]').attr("value");
+			 
 		}
 		
 		 
