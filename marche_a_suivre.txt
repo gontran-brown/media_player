@@ -1,6 +1,10 @@
 il faut pouvoir ouvrir un fichier quelconque
-
+ajouter les upload a la playlist
 si cest une video la remplacer par celle qui tourne
 une image lincruster a la place de celle qui est joué avant la video
 
 si cest un fichier xml pouvoir le construir sous forme du formulaire de construction!
+
+ce WE faire les tests
+
+
