@@ -1,0 +1,6 @@
+il faut pouvoir ouvrir un fichier quelconque
+
+si cest une video la remplacer par celle qui tourne
+une image lincruster a la place de celle qui est joué avant la video
+
+si cest un fichier xml pouvoir le construir sous forme du formulaire de construction!
