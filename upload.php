@@ -24,11 +24,6 @@
 		}
 		else 
 		echo 'je ne suis pas dans la boucle ou il existe un document';
-/*
->>>>>>> a702db46a48b2f3551c9490b17cf733194968a27
-	}
-*/
-
 
 ?>
 
