@@ -4,29 +4,44 @@ echo  '<br/>';
 
  
  if(!empty($_FILES['document']['name'])){
-	echo $_FILES['document']['name'];
+	 $doc =  $_FILES['document']['name'];
+	echo $doc;
+	$xml .= "<track>\r\n";
+	$info ="facultatif";
+	$line .= "\t<location>".$doc."</location>\r\n";
+	$line .= "\t<creator>".$info."</creator\r\n";	
+	$line .= "\t<title>".$info."</title\r\n";	
+	$line .= "\t<limage>".$info."</image>\r\n";	
+	 
+         
+	$xml .= $line;
+	$xml .= "</track>";
 	echo  '<br/>';
+	if (!($f=fopen("playlist.xml","a+"))) {
+		$file = "playlist.xml";
+		$fp = fopen($file, "r");
+		$return =$xml.fread($fp, filesize($file));
+		fclose($fp);
+		echo $return;
+	}
  }
  else{
 	 echo 'vous devez entrer un document pour que ce soit uploader';
  }
  
- if (!($f=fopen("playlist.xml","a+"))) {
-	 $file = "playlist.xml";
-	$fp = fopen($file, "r");
-	$return = fread($fp, filesize($file));
-	fclose($fp);
-	echo $return;
+
 /*
 exit("imposible d'ouvrir le fichier playlist.xml"); 
 */
-}
- 
+
+/*
+ }
 else{ 
 	$f=fopen("playlist.xml","a+");
 	fclose($f); 
 	echo'fermeture du fichier playlist.xml'; 
 }
+*/
  
 /*
 if (isset($_POST['filename'])){
