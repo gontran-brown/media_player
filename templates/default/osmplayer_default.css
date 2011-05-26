@@ -1,10 +1,10 @@
 /*--------------------- Loading cursor -------------------*/
-#mediaplayerloading, #mediabusy {
+#playerloading, #mediabusy {
   position:absolute;
   display: table-cell;
 }
 
-#mediaplayerloading img, #mediabusy img {
+#playerloading img, #mediabusy img {
   width:32px;
   height:32px;
   position: absolute;
@@ -16,7 +16,7 @@
 }
 
 /*--------------------- Main Dialog -------------------*/
-.mediaplayerdialog {
+.playerdialog {
   position:relative;
   font-family:"Trebuchet MS", Helvetica, sans-serif !important;
   font-style:normal !important;
@@ -27,23 +27,23 @@
   border:0;
 }
 
-.mediaplayerdialog.playlistonly {
+.playerdialog.playlistonly {
   width:150px;
 }
 
-.mediaplayerdialog.playlistonly.playlisthorizontal {
+.playerdialog.playlistonly.playlisthorizontal {
   height:136px;
 }
 
-.mediaplayerdialog.playlistonly.playlisthorizontal.mediashowtitle {
+.playerdialog.playlistonly.playlisthorizontal.mediashowtitle {
   height:152px;
 }
 
-.mediaplayerdialog.controlleronly {
+.playerdialog.controlleronly {
   height:22px;
 }
 
-#mediaplayer {
+#player {
   position:absolute;
   left:0;
   right:0;
@@ -51,15 +51,15 @@
   bottom:0px;
 }
 
-.mediaplayerdialog.mediashowtitle #mediaplayer {
+.playerdialog.mediashowtitle #player {
   top:22px;
 }
 
-.mediaplayerdialog.mediashowplaylist #mediaplayer {
+.playerdialog.mediashowplaylist #player {
   right:150px;
 }
 
-.mediaplayerdialog.playlisthorizontal #mediaplayer {
+.playerdialog.playlisthorizontal #player {
   right:0px;
   bottom:136px;
 }
@@ -80,7 +80,7 @@
   z-index:11;
 }
 
-.mediaplayerdialog.mediafullscreen #mediadisplay {
+.playerdialog.mediafullscreen #mediadisplay {
   left: 0;
   top: 0;
   right: 0;
@@ -99,7 +99,7 @@
   background-image:url('images/mask.png');
 }
 
-.mediaplayerdialog.mediafullscreen #mediabusy {
+.playerdialog.mediafullscreen #mediabusy {
   position: fixed;
   left: 0;
   top: 0;
@@ -120,7 +120,7 @@
   height:100%;
 }
 
-.mediaplayerdialog.mediafullscreen #mediapreview {
+.playerdialog.mediafullscreen #mediapreview {
   position: fixed;
   left: 0;
   top: 0;
@@ -141,7 +141,7 @@
   background-image:url('images/mask.png');
 }
 
-.mediaplayerdialog.mediafullscreen #mediaplay {
+.playerdialog.mediafullscreen #mediaplay {
   position: fixed;
   left: 0;
   top: 0;
@@ -178,7 +178,7 @@
   width:64px;
 }
 
-.mediaplayerdialog.mediafullscreen #mediatitlelinks {
+.playerdialog.mediafullscreen #mediatitlelinks {
   position:fixed;
   top:5px;
   right:5px;
@@ -238,7 +238,7 @@
   bottom:0;
 }
 
-.mediaplayerdialog.mediafullscreen #mediacontrol {
+.playerdialog.mediafullscreen #mediacontrol {
   position: fixed;
   z-index:1005;
   width:400px;
@@ -259,7 +259,7 @@
   height:22px;
 }
 
-.mediaplayerdialog.mediashowvoter #mediacontrolcenter {
+.playerdialog.mediashowvoter #mediacontrolcenter {
   margin-right:230px;
 }
 
@@ -269,7 +269,7 @@
   height:22px;
 }
 
-.mediaplayerdialog.mediashowvoter #mediacontrolright {
+.playerdialog.mediashowvoter #mediacontrolright {
   width:230px;
 }
 
@@ -343,7 +343,7 @@
   vertical-align:center;
 }
 
-.mediaplayerdialog.mediafullscreen #mediamenu {
+.playerdialog.mediafullscreen #mediamenu {
   position:fixed;
   z-index:1020;
   top: 50%;
@@ -375,11 +375,11 @@
   right:0;
 }
 
-.mediaplayerdialog.mediashowtitle #mediaplaylist {
+.playerdialog.mediashowtitle #mediaplaylist {
   top:22px;
 }
 
-.mediaplayerdialog.playlisthorizontal #mediaplaylist {
+.playerdialog.playlisthorizontal #mediaplaylist {
   width:100%;
   height:136px;
   top:auto;
@@ -387,7 +387,7 @@
   right:0;
 }
 
-.mediaplayerdialog.playlisthorizontal.playlistonly #mediaplaylist {
+.playerdialog.playlisthorizontal.playlistonly #mediaplaylist {
   top:22px;
 }
 
@@ -445,7 +445,7 @@
   height:100%;
 }
 
-.mediaplayerdialog.playlisthorizontal #mediascrollbarwrapper{
+.playerdialog.playlisthorizontal #mediascrollbarwrapper{
   position:absolute;
   bottom:0;
   width:100%;
@@ -463,7 +463,7 @@
   top:0px;
 }
 
-.mediaplayerdialog.playlisthorizontal #mediascrollup {
+.playerdialog.playlisthorizontal #mediascrollup {
   position:absolute;
   left:0px;
 }
@@ -473,7 +473,7 @@
   bottom:0px;
 }
 
-.mediaplayerdialog.playlisthorizontal #mediascrolldown {
+.playerdialog.playlisthorizontal #mediascrolldown {
   position:absolute;
   right:0px;
 }
@@ -484,7 +484,7 @@
   bottom:0px;
 }
 
-.mediaplayerdialog.playlisthorizontal #mediascrollbar {
+.playerdialog.playlisthorizontal #mediascrollbar {
   position:absolute;
   left:18px;
   right:18px;
@@ -500,7 +500,7 @@
   border:0;
 }
 
-.mediaplayerdialog.playlisthorizontal #mediascrolltrack {
+.playerdialog.playlisthorizontal #mediascrolltrack {
   position:absolute;
   width:100%;
   height:18px;
@@ -518,11 +518,11 @@
   cursor:pointer;
 }
 
-.mediaplayerdialog.mediahidescroll #mediateaser {
+.playerdialog.mediahidescroll #mediateaser {
   width:143px;
 }
 
-.mediaplayerdialog.playlisthorizontal.mediahidescroll #mediateaser {
+.playerdialog.playlisthorizontal.mediahidescroll #mediateaser {
   height:108px;
 }
 
@@ -566,7 +566,7 @@
   z-index:500;
 }
 
-.mediaplayerdialog.mediafullscreen .medialogo {
+.playerdialog.mediafullscreen .medialogo {
   position:fixed;
   z-index:1500;
   left:5px;
