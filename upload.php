@@ -15,9 +15,12 @@
 			if ($key == 'document'){
 				echo 'key == document';
 			}
+<<<<<<< HEAD
 */
 
 /*
+=======
+>>>>>>> b6421024eeac645cca912e536bce33b9132aa2c3
 			echo 'il exite un docutment';
 			if(!function_exists('downloader')){
 				echo 'dans la boucle !function_exists(\'downloader\')< br/>';
@@ -37,11 +40,15 @@
 */
 		}
 		else 
+<<<<<<< HEAD
 		echo 'je ne suis pas dans la boucle ou il existe un document< br/>';
 /*
 	}
 */
 
+=======
+		echo 'je ne suis pas dans la boucle ou il existe un document';
+>>>>>>> b6421024eeac645cca912e536bce33b9132aa2c3
 
 ?>
 
