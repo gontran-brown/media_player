@@ -1,9 +1,9 @@
 $(document).ready(function() {
 
-    var $this = $("#player");
+    var $this = $("#playerP");
     $this.mediaplayer({
 			  playlist: "playlist.xml",
-        //~ showPlaylist:false,
+        showPlaylist:true,
         //file:"../videos/5_SG.flv",
         //image:"videos/urbilog.png",
         //prefix:"player_",
@@ -46,10 +46,24 @@ $(document).ready(function() {
                 }
             }
         }
-    });
+    }).end();
+    //~ fin du $this.find("#mediaplaypause").click(function())
+    var j;
+    //~ var $media = $("#player");
+ 
+    
+   $this.find("#mediamaxbutton").click(function(){
+
+	alert("jai cliqué sur playlist");
+		 //~ var button = j%2;
+         //~ j++;
+         //~ if(button == 0){
+		 //~ $this.mediaplayer.playlist(showPlaylist = false);
+	 //~ 	}
+	 //~ 	else $this.mediaplayer.playlist = true;
+	});
     
 });
-
 //~ this.maximize=function(i){
        //~ if(!this.fullScreen){
                //~ if(f.template.onMaximize&&(i!=this.maxOn)){
