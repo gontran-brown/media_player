@@ -48,18 +48,6 @@ $(document).ready(function() {
         }
     });
     
-    //~ var $media = $this.find("#mediatitlebar");
-	//~ $media.find("#mediamaxbutton").click(function(){
-		//~ console.log("open playlist");
-		 //~ var file ;
-		 //~ $this.after('<form id="upload" method ="POST" action ="upload.php" enctype="multipart/form-data">'+
-		 //~ '<input type = "hidden" name ="MAX_FILE_SIZE" value = "900000000000"/>'+
-		  //~ '<input type="file" name ="document"></input>'+
-		  //~ 
-		//~ '<input type="submit" value = "Playlist"></form>');
-		 	//~ 
-//~ 
-		//~ });
 });
 
 //~ this.maximize=function(i){
