@@ -8,3 +8,5 @@ si cest un fichier xml pouvoir le construir sous forme du formulaire de construc
 ce WE faire les tests
 
 !* trouver un moyen d'obliger le fichier trad.xml a proter le meme nom que la video  avec juste l'extension qui change*!
+
+pouvoir mettre toute les video dans le dossier videos(car les videos autres que flv ne se lance pas si ells se trouvent dans le dossier qui n'est pas la racine)
