@@ -48,15 +48,15 @@ $(document).ready(function() {
         }
     });
 
-   var j;
+   var j = 0;
    $this.find("#mediatitlelinksinner").click(function(){
-	    var button = j%2;
+	    var buton = j%2;
         j++;
-
-		if(button == 0){	
+console.log("j : "+j);	
+		if(buton == 0){	
 			 console.log("playlist off");		 
-			 $("#mediastitlebar").hide();
-
+			 //~ mediaplayer.onFullScreen(!mediaplayer.fullScreen);
+			  $("#mediastitlebar").hide();
 		 }
 		 else{
 			 console.log("playlist on");
