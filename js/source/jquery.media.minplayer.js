@@ -37,7 +37,7 @@
     link:"http://www.mediafront.org",
     file:"",
     image:"",
-    timeout:4,
+    timeout:8,
     autoLoad:true
   });
 
@@ -82,6 +82,10 @@
       // Store the preview image.
       this.preview = player.find( settings.ids.preview ).mediaimage();
       if( this.preview ) {
+        this.preview.display.unbind("click").bind("click", function() {
+          _this.onMediaClick();
+        });
+
         this.preview.display.unbind("imageLoaded").bind("imageLoaded", function() {
           _this.onPreviewLoaded();
         });
@@ -157,7 +161,7 @@
                 this.media.player.seekMedia( data.value );
                 break;
               case "volume":
-                this.media.player.setVolume( data.value );
+                this.media.setVolume( data.value );
                 break;
               case "mute":
                 this.media.mute( data.value );
@@ -185,6 +189,9 @@
         if( settings.template.onFullScreen ) {
           settings.template.onFullScreen( full );
         }
+
+        // Refresh the preview image.
+        this.preview.refresh();
       };
          
       // Handle when the preview image loads.
@@ -229,14 +236,24 @@
         }
       };
 
+      // Called when the media is clicked.
+      this.onMediaClick = function() {
+        if( this.media.player && !this.media.hasControls() ) {
+          if( this.playing ) {
+            this.media.player.pauseMedia();
+          }
+          else {
+            this.media.player.playMedia();
+          }
+        }
+      }
+
       // Set the media player.
       this.media = this.display.find( settings.ids.media ).mediadisplay( settings );
       if( this.media ) {
         // If they click on the media region, then pause the media.
-        this.media.display.click( function() {
-          if( _this.media.player && !_this.media.hasControls() ) {
-            _this.media.player.pauseMedia();
-          }
+        this.media.display.unbind("click").bind("click", function() {
+          _this.onMediaClick();
         });
       }
 
@@ -248,10 +265,33 @@
           this.logo.display.css({
             width:settings.logoWidth,
             height:settings.logoHeight
+            });
+          this.logo.display.bind("imageLoaded", function() {
+            _this.setLogoPos();
           });
           this.logo.loadImage( settings.logo );
         }
       }
+      
+      // Sets the logo position.
+      this.setLogoPos = function() {
+        if( this.logo ) {
+          var logocss = {};
+          if( settings.logopos=='se' || settings.logopos=='sw' ) {
+            logocss['bottom'] = settings.logoy;
+          }
+          if( settings.logopos=='ne' || settings.logopos=='nw' ) {
+            logocss['top'] = settings.logoy;
+          }
+          if( settings.logopos=='nw' || settings.logopos=='sw' ) {
+            logocss['left'] = settings.logox;
+          }
+          if( settings.logopos=='ne' || settings.logopos=='se' ) {
+            logocss['right'] = settings.logox;
+          }
+          this.logo.display.css(logocss);
+        }
+      };      
 
       // Reset to previous state...
       this.reset = function() {
@@ -305,6 +345,10 @@
       this.onResize = function() {
         if( this.preview ) {
           this.preview.refresh();
+        }
+        
+        if( this.media ) {
+          this.media.onResize();
         }
       };
 

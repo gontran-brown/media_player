@@ -34,12 +34,12 @@
       this.mediaType = "";
       this.loaded = false;
       this.mediaFile = null;
+      this.playerElement = null;
          
       this.getPlayer = function( mediaFile, preview ) {
         this.mediaFile = mediaFile;
         var playerId = options.id + '_' + this.mediaType;
         var html = '<' + this.mediaType + ' style="position:absolute" id="' + playerId + '"';
-        html += (this.mediaType == "video") ? ' width="100%" height="100%"' : '';
         html += preview ? ' poster="' + preview + '"' : '';
             
         if( typeof mediaFile === 'array' ) {
@@ -55,8 +55,12 @@
             
         html += '</' + this.mediaType + '>';
         this.display.append( html );
-        this.bytesTotal = mediaFile.bytesTotal;
-        return this.display.find('#' + playerId).eq(0)[0];;
+        this.bytesTotal = mediaFile.bytesTotal;        
+        this.playerElement = this.display.find('#' + playerId);
+        this.onResize();
+        
+        // return the player object.
+        return this.playerElement.eq(0)[0];;
       };
          
       // Create a new HTML5 player.
@@ -120,9 +124,11 @@
               busy:"hide"
             });
           }, true);
-          this.player.addEventListener( "error", function() {
+          this.player.addEventListener( "error", function(e) {
+            _this.onError(e.target.error);
             onUpdate( {
-              type:"error"
+              type:"error",
+              code:e.target.error.code
             } );
           }, true);
           this.player.addEventListener( "waiting", function() {
@@ -140,6 +146,14 @@
             }
             else {
               timeupdated = true;
+            }
+          }, true);
+          this.player.addEventListener( "durationchange", function() {
+            if( this.duration && (this.duration !== Infinity) ) {
+              onUpdate( {
+                type:"durationupdate",
+                duration:this.duration
+              });
             }
           }, true);
 
@@ -161,6 +175,24 @@
           onUpdate({
             type:"playerready"
           });
+        }
+      };
+      
+      // A function to be called when an error occurs.
+      this.onError = function( error ) {
+        switch(error.code) {
+          case 1:
+            console.log("Error: MEDIA_ERR_ABORTED");
+            break;
+          case 2:
+            console.log("Error: MEDIA_ERR_DECODE");
+            break;
+          case 3:
+            console.log("Error: MEDIA_ERR_NETWORK");
+            break;
+          case 4:
+            console.log("Error: MEDIA_ERR_SRC_NOT_SUPPORTED");
+            break;
         }
       };
 
@@ -191,13 +223,13 @@
       };
          
       this.playMedia = function() {
-        if( this.player ) {
+        if( this.player && this.player.play ) {
           this.player.play();
         }
       };
          
       this.pauseMedia = function() {
-        if( this.player ) {
+        if( this.player && this.player.pause ) {
           this.player.pause();
         }
       };
@@ -226,7 +258,8 @@
       };
          
       this.getDuration = function() {
-        return this.player ? this.player.duration : 0;
+        var dur = this.player ? this.player.duration : 0;
+        return (dur === Infinity) ? 0 : dur;
       };
          
       this.getCurrentTime = function() {
@@ -235,7 +268,7 @@
 
       this.getPercentLoaded = function() {
         if( this.player && this.player.buffered && this.player.duration ) {
-          return (this.player.buffered.end() / this.player.duration);
+          return (this.player.buffered.end(0) / this.player.duration);
         }
         else if( this.bytesTotal ) {
           return (this.bytesLoaded / this.bytesTotal);
@@ -244,6 +277,14 @@
           return 0;
         }
       }
+      
+      // Called when the player resizes.
+      this.onResize = function() {
+        // If this is a video, set the width and height of the video element.
+        if( this.mediaType == "video" ) {
+          this.playerElement.css({width:this.display.width(), height:this.display.height()});
+        }
+      };   
          
       // Not implemented yet...
       this.setQuality = function( quality ) {};
@@ -256,23 +297,32 @@
       this.showControls = function(show) {};
       //this.setSize = function( newWidth, newHeight ) {};
       this.getEmbedCode = function() {
-        var flashVars = {
-          config:"config",
-          id:"mediafront_player",
-          file:this.mediaFile.path,
-          image:this.preview,
-          skin:options.skin
-        };
-        if( this.mediaFile.stream ) {
-          flashVars.stream = this.mediaFile.stream;
+
+        // Only return the Flash embed if this is a Flash playable media field.
+        if( (this.mediaFile.extension == 'mp4') ||
+            (this.mediaFile.extension == 'm4v') ||
+            (this.mediaFile.extension == 'webm') ) {
+          var flashVars = {
+            config:"config",
+            id:"mediafront_player",
+            file:this.mediaFile.path,
+            image:this.preview,
+            skin:options.skin
+          };
+          if( this.mediaFile.stream ) {
+            flashVars.stream = this.mediaFile.stream;
+          }
+          return jQuery.media.utils.getFlash(
+            options.flashPlayer,
+            "mediafront_player",
+            options.embedWidth,
+            options.embedHeight,
+            flashVars,
+            options.wmode );
         }
-        return jQuery.media.utils.getFlash(
-          options.flashPlayer,
-          "mediafront_player",
-          options.embedWidth,
-          options.embedHeight,
-          flashVars,
-          options.wmode );
+        else {
+          return "This media does not support embedding.";
+        }
       };
       this.getMediaLink = function() {
         return "This media currently does not have a link.";

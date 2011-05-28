@@ -146,7 +146,7 @@
         if( this.volumeBar ) {
           if( settings.volumeVertical ) {
             this.volumeUpdate.css({
-              "marginTop":(this.volumeBar.handlePos + this.volumeBar.handleMid + this.volumeBar.handleOffset),
+              "marginTop":(this.volumeBar.handlePos + this.volumeBar.handleMid),
               "height":(this.volumeBar.trackSize - this.volumeBar.handlePos)
             });
           }
@@ -205,11 +205,7 @@
       // Handle the media events...
       this.onMediaUpdate = function( data ) {
         switch( data.type ) {
-          case "nomedia":
-            this.display.hide();
-            break;
           case "reset":
-            this.display.show();
             this.reset();
             break;
           case "paused":
