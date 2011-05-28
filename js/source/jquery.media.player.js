@@ -40,7 +40,8 @@
     prefix:"",
     zIndex:400,
     fluidWidth:false,
-    fluidHeight:false
+    fluidHeight:false,
+    fullscreen:false
   });
 
   jQuery.media.ids = jQuery.extend( jQuery.media.ids, {
@@ -223,10 +224,7 @@
       this.onEscKey = function() {
         // If they are in full screen mode, then escape when they press the ESC key.
         if( this.fullScreen ) {
-          this.fullScreen = false;
-          if( this.node && this.node.player ) {
-            this.node.player.fullScreen( this.fullScreen );
-          }
+          this.onFullScreen( false );
         }
       };
          
@@ -249,11 +247,17 @@
         });
 
         element.display.unbind("fullscreen").bind("fullscreen", function( event ) {
-          _this.fullScreen = !_this.fullScreen;
-          if( _this.node && _this.node.player ) {
-            _this.node.player.fullScreen( _this.fullScreen );
-          }
+          _this.onFullScreen( !_this.fullScreen );
         });
+      };
+
+      // Function to put the player in fullscreen mode.
+      this.onFullScreen = function( full ) {
+        this.fullScreen = full;
+        if( this.node && this.node.player ) {
+          this.node.player.fullScreen( this.fullScreen );
+          this.onResize();
+        }
       };
 
       // Setup the title bar.
@@ -289,8 +293,8 @@
           _this.onNodeLoad( data );
         });
             
-        if( this.node.player ) {
-          this.node.player.display.unbind("mediaupdate").bind( "mediaupdate", function( event, data ) {
+        if( this.node.player && this.node.player.media ) {
+          this.node.player.media.display.unbind("mediaupdate").bind( "mediaupdate", function( event, data ) {
             _this.onMediaUpdate( data );
           });
         }
@@ -520,6 +524,11 @@
         this.dialog.css("position","relative");
         this.dialog.css("marginLeft",0);
         this.dialog.css("overflow","visible");
+
+        // If they wish to default the player in fullscreen mode, do that now.
+        if( settings.fullscreen ) {
+          this.onFullScreen(true);
+        }
 
         // Set our loaded flag to true.
         this.loaded = true;

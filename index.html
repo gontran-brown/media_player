@@ -1,4 +1,5 @@
-<html>
+
+<html> 
   <head>
     <title>Open Standard Media (OSM) Player: PHP Demo</title>
     <script type="text/javascript" src="jquery-ui/js/jquery.js"></script>
@@ -40,9 +41,9 @@
     <script type="text/javascript" src="templates/default/jquery.media.template.default.compressed.js"></script>
     <script type="text/javascript">
       $(function() {
-      $("#mediaplayer").mediaplayer({
-      playlist: "playlist.xml"
-      });
+        $("#mediaplayer").mediaplayer({
+          playlist: "playlist.xml"
+        });
       });
     </script>
     <link rel="stylesheet" type="text/css" href="jquery-ui/css/dark-hive/jquery-ui-1.8rc1.custom.css" />
@@ -63,8 +64,7 @@
             <a href="#menu" id="mediamenubutton" class="ui-state-default ui-corner-all"><span class="ui-icon ui-icon-info"></span></a>
           </div>
         </div>
-      </div>
-      <div id="mediaplayer" class="ui-helper-clearfix">
+      </div>  <div id="mediaplayer" class="ui-helper-clearfix">
         <div id="mediamenu" class="ui-tabs ui-widget ui-widget-content ui-corner-all" id="tabs">
           <div id="mediamenuclose">
             <span class="ui-icon ui-icon-circle-close"></span>
@@ -99,8 +99,7 @@
             <div id="mediapreview"></div>
             <div id="mediadisplay"></div>
           </div>
-        </div>
-	<div id="mediacontrol" class="ui-widget-header ui-corner-bottom">
+        </div>    <div id="mediacontrol" class="ui-widget-header ui-corner-bottom">
           <div id="mediacontrolleft">
             <div id="mediaplaypause" class="ui-state-default ui-corner-all">
               <div class="on">
@@ -146,67 +145,40 @@
               </div>
             </div>
           </div>
-      </div>  </div>
-
+        </div>  </div>
       <div id="mediaplaylist">
         <div id="mediascrollwrapper">
-          <div id="mediabusy" class="ui-state-default ui-state-disabled">
-	    <img src="templates/default/images/busy.gif" />
-          </div>
+          <div id="mediabusy" class="ui-state-default ui-state-disabled"><img src="templates/default/images/busy.gif" /></div>
           <div id="mediascroll" class="ui-helper-clearfix">
             <div id="mediascrollbarwrapper">
-              <div id="mediascrollup" class="ui-state-default">
-		<span class="ui-icon ui-icon-triangle-1-n"></span>
-              </div>
+              <div id="mediascrollup" class="ui-state-default"><span class="ui-icon ui-icon-triangle-1-n"></span></div>
               <div id="mediascrollbar">
                 <div id="mediascrolltrack" class="ui-widget-content">
-                  <div id="mediascrollhandle" class="ui-state-default">
-		    <span class="ui-icon ui-icon-grip-dotted-horizontal"></span>
-                  </div>
+                  <div id="mediascrollhandle" class="ui-state-default"><span class="ui-icon ui-icon-grip-dotted-horizontal"></span></div>
                 </div>
               </div>
-              <div id="mediascrolldown" class="ui-state-default">
-		<span class="ui-icon ui-icon-triangle-1-s"></span>
-              </div>
-            </div>
-            <div id="medialistmask">
+              <div id="mediascrolldown" class="ui-state-default"><span class="ui-icon ui-icon-triangle-1-s"></span></div>
+            </div>         <div id="medialistmask">
               <div id="medialist">
                 <div id="mediateaser" class="ui-state-default">
-                  <div id="mediaimage" class="mediafield ui-widget-content" type="image" field="thumbnail">
-                  </div>
-                  <div id="mediatitle" class="mediafield ui-helper-clearfix" type="text" field="title">Sample Title
-                  </div>
-                </div>
-              </div>
+                  <div id="mediaimage" class="mediafield ui-widget-content" type="image" field="thumbnail"></div>
+                  <div id="mediatitle" class="mediafield ui-helper-clearfix" type="text" field="title">Sample Title</div>
+                </div>        </div>
             </div>
           </div>
         </div>
         <div id="mediapager" class="ui-widget-header ui-corner-bottom">
           <div id="mediapagerleft">
-            <div id="mediaprevpage" class="mediapagerlink ui-state-default ui-corner-all">
-	      <span class="ui-icon ui-icon-seek-prev"></span>
-            </div>
-            <div id="medialoadprev" class="mediapagerlink ui-state-default ui-corner-all">
-	      <span class="ui-icon ui-icon-triangle-1-w"></span>
-            </div>
-            <div id="mediaprev" class="mediapagerlink ui-state-default ui-corner-all">
-	      <span class="ui-icon ui-icon-carat-1-w"></span>
-            </div>
+            <div id="mediaprevpage" class="mediapagerlink ui-state-default ui-corner-all"><span class="ui-icon ui-icon-seek-prev"></span></div>
+            <div id="medialoadprev" class="mediapagerlink ui-state-default ui-corner-all"><span class="ui-icon ui-icon-triangle-1-w"></span></div>
+            <div id="mediaprev" class="mediapagerlink ui-state-default ui-corner-all"><span class="ui-icon ui-icon-carat-1-w"></span></div>
           </div>
           <div id="mediapagerright">
-            <div id="medianext" class="mediapagerlink ui-state-default ui-corner-all">
-	      <span class="ui-icon ui-icon-carat-1-e"></span>
-            </div>
-            <div id="medialoadnext" class="mediapagerlink ui-state-default ui-corner-all">
-	      <span class="ui-icon ui-icon-triangle-1-e"></span>
-            </div>
-            <div id="medianextpage" class="mediapagerlink ui-state-default ui-corner-all">
-	      <span class="ui-icon ui-icon-seek-next"></span>
-            </div>
+            <div id="medianext" class="mediapagerlink ui-state-default ui-corner-all"><span class="ui-icon ui-icon-carat-1-e"></span></div>
+            <div id="medialoadnext" class="mediapagerlink ui-state-default ui-corner-all"><span class="ui-icon ui-icon-triangle-1-e"></span></div>
+            <div id="medianextpage" class="mediapagerlink ui-state-default ui-corner-all"><span class="ui-icon ui-icon-seek-next"></span></div>
           </div>
-        </div>
-      </div>
-
+        </div></div>
     </div>
   </body>
 </html>

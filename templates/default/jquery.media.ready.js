@@ -47,20 +47,22 @@ $(document).ready(function() {
             }
         }
     });
-    
+
    var j;
    $this.find("#mediatitlelinksinner").click(function(){
 	    var button = j%2;
         j++;
+
 		if(button == 0){	
 			 console.log("playlist off");		 
 			 $("#mediastitlebar").hide();
+
 		 }
 		 else{
 			 console.log("playlist on");
 			 $("#mediatitlebar").show();
 		 }
-		
+
 	});
-    
+
 });

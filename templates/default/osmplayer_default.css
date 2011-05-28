@@ -61,6 +61,10 @@
 
 .playerdialog.playlisthorizontal #player {
   right:0px;
+  bottom:0px;
+}
+
+.playerdialog.playlisthorizontal.mediashowplaylist #player {
   bottom:136px;
 }
 
@@ -561,8 +565,6 @@
   position:absolute;
   width:49px;
   height:15px;
-  bottom:5px;
-  left:5px;
   z-index:500;
 }
 

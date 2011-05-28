@@ -203,7 +203,8 @@ class OSMPlayer {
       'zIndex' => 400,
       'timeout' => 4,
       'fluidWidth' => false,
-      'fluidHeight' => false
+      'fluidHeight' => false,
+      'fullscreen' => false
     );
   }
 
@@ -368,6 +369,7 @@ class OSMPlayer {
         "js/source/jquery.media.display.js",
         "js/source/jquery.media.minplayer.js",
         "js/source/jquery.media.menu.js",
+        "js/source/jquery.media.mousewheel.js",
         "js/source/jquery.media.node.js",
         "js/source/jquery.media.pager.js",
         "js/source/jquery.media.player.js",
@@ -452,7 +454,7 @@ class OSMPlayer {
             $params[] = $param . ':' . ($value ? 'true' : 'false');
             break;
           default:
-            $params[] = $param . ':' . $value;
+            $params[] = $param . ':' . ($value ? $value : 0);
             break;
         }
       }

@@ -47,7 +47,7 @@
       this.settings = jQuery.media.utils.getSettings( options );
       this.display = mediaWrapper;
       var _this = this;
-      this.volume = 0;
+      this.volume = -1;
       this.player = null;
       this.preview = '';
       this.updateInterval = null;
@@ -152,10 +152,13 @@
         }
       };
          
-      this.loadMedia = function( file ) {
+      this.loadMedia = function( file, mediaplayer ) {
         if( file ) {
           // Get the media file object.
           file = new jQuery.media.file( this.getMediaFile( file ), this.settings );
+          
+          // Set the media player if they force it.
+          file.player = mediaplayer ? mediaplayer : file.player;
                
           // Stop the current player.
           this.stopMedia();
@@ -209,6 +212,16 @@
             clearInterval( this.progressInterval );
             clearInterval( this.updateInterval );
             break;
+          case "error":
+            if( data.code == 4 ) {
+              // It is saying not supported... Try and fall back to flash...
+              this.loadMedia(this.mediaFile, "flash");
+            }
+            else {
+              clearInterval( this.progressInterval );
+              clearInterval( this.updateInterval );
+            }
+            break;            
           case "paused":
             clearInterval( this.updateInterval );
             break;
@@ -232,6 +245,9 @@
               quality: this.getQuality()
             });
             break;
+          case "durationupdate":
+            this.mediaFile.duration = data.duration;
+            break;
           case "complete":
             this.playNext();
             break;
@@ -243,7 +259,7 @@
         if( data.type=="playing" && !this.loaded ) {
           if( this.settings.autoLoad && !this.settings.autostart ) {
             setTimeout( function() {
-              _this.player.setVolume( (_this.settings.volume / 100) );
+              _this.setVolume();
               _this.player.pauseMedia();
               _this.settings.autostart = true;
               _this.loaded = true;
@@ -251,7 +267,7 @@
           }
           else {
             this.loaded = true;
-            this.player.setVolume( (this.settings.volume / 100) );
+            this.setVolume();
             this.display.trigger( "mediaupdate", data );
           }
         }
@@ -298,12 +314,12 @@
       };
          
       this.mute = function( on ) {
-        if( on ) {
-          this.volume = this.player.getVolume();
-          this.player.setVolume( 0 );
-        }
-        else {
-          this.player.setVolume( this.volume );
+        this.player.setVolume( on ? 0 : this.volume );
+      };
+      
+      this.onResize = function() {
+        if( this.player && this.player.onResize ) {
+          this.player.onResize();
         }
       };
          
@@ -341,6 +357,20 @@
         else {
           return 0;
         }
+      };
+      
+      this.setVolume = function( vol ) {
+        this.volume = vol ? vol : ((this.volume == -1) ? (this.settings.volume / 100) : this.volume);
+        if( this.player ) {
+          this.player.setVolume(this.volume);
+        }
+      }
+      
+      this.getVolume = function() {
+        if( !this.volume ) {
+          this.volume = this.player.getVolume();
+        }
+        return this.volume;
       };
          
       this.getQuality = function() {
