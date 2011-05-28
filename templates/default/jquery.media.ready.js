@@ -30,27 +30,39 @@ $(document).ready(function() {
         //console.log("bouton:"+button+";temps:"+currentTime);
         $form_subtitle_table = $form_subtitle.find("table tbody");
         if(button == 0){
-            if (($form_subtitle_table.length == 0) && (currentTime != null)){
+            if(($form_subtitle_table.length == 0) && (currentTime != null)){
                 $form_subtitle.prepend('<table><thead><tr><th>Temps début :</th><th>Temps fin :</th><th>Sous titre :</th></tr></thead><tbody><tr><td><input type="text" name="debut'+line+'" value="'+currentTime+'"></input></td><td></td><td></td></tr></tbody></table>');
             }
-            else {
+            else{
                 $form_subtitle_table.prepend('<tr><td><input type="text" name="debut'+line+'" value="'+currentTime+'"></input></td><td></td><td></td></tr>');
             }
         }
         else{
-            if (currentTime != null){
-                if ($form_subtitle_table.length > 0){
+            if(currentTime != null){
+                if($form_subtitle_table.length > 0){
                     $form_subtitle_table.find("tr:first-child td:empty:first").append('<input type="text" name="fin'+line+'" value="'+currentTime+'"></input>');
                     $form_subtitle_table.find("tr:first-child td:empty:first").append('<input type="text" name="subtitle'+line+'"></input>');
                     line++;
                 }
             }
         }
-    }).end();
-    //~ fin du $this.find("#mediaplaypause").click(function())
+    });
+    
+   var j;
    
-   $this.find("#mediamaxbutton").click(function(){
-		alert("jai cliqué sur playlist");
+   $this.find("#mediatitlelinksinner").click(function(){
+	    var button = j%2;
+        j++;
+		
+		 if(button == 0){	
+			 console.log("playlist off");		 
+			 $this.find("#mediascrollwrapper").hide("fast");
+		 }
+		 else{
+			 console.log("playlist on");
+			 $("#mediatitlebar").show("slow");
+		 }
+		
 	});
     
 });
