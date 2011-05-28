@@ -2,8 +2,61 @@ $(document).ready(function() {
 
     var $this = $("#playerP");
     $this.mediaplayer({
-		playlist: "playlist.xml",
+        playlist: "playlist.xml",
         showPlaylist:true,
+        ids: {
+            titleLinks:"#mediatitlelinks",
+            listMask:"#medialistmask",
+            list:"#medialist",
+            scrollWrapper:"#mediascrollbarwrapper",
+            scrollBar:"#mediascrollbar",
+            scrollTrack:"#mediascrolltrack",
+            scrollHandle:"#mediascrollhandle",
+            scrollUp:"#mediascrollup",
+            scrollDown:"#mediascrolldown",
+            linkText:"#medialinktext",
+            pager:"#mediapager",
+            scroll:"#mediascroll",
+            busy:"#mediabusy",
+            links:"#medialinks",
+            loading:"#playerloading",
+            player:"#player",
+            menu:"#mediamenu",
+            titleBar:"#mediatitlebar",
+            node:"#medianode",
+            playlist:"#mediaplaylist",
+            control:"#mediacontrol",
+            prev:"#mediaprev",
+            next:"#medianext",
+            loadPrev:"#medialoadprev",
+            loadNext:"#medialoadnext",
+            prevPage:"#mediaprevpage",
+            nextPage:"#medianextpage",
+            voter:"#mediavoter",
+            uservoter:"#mediauservoter",
+            mediaRegion:"#mediaregion",
+            field:".mediafield",
+            busy:"#mediabusy",
+            preview:"#mediapreview",
+            play:"#mediaplay",
+            media:"#mediadisplay",
+            close:"#mediamenuclose",
+            embed:"#mediaembed",
+            elink:"#mediaelink",
+            email:"#mediaemail",
+            linkScroll:"#medialinkscroll",
+            currentTime:"#mediacurrenttime",
+            totalTime:"#mediatotaltime",
+            playPause:"#mediaplaypause",
+            seekUpdate:"#mediaseekupdate",
+            seekProgress:"#mediaseekprogress",
+            seekBar:"#mediaseekbar",
+            seekHandle:"#mediaseekhandle",
+            volumeUpdate:"#mediavolumeupdate",
+            volumeBar:"#mediavolumebar",
+            volumeHandle:"#mediavolumehandle",
+            mute:"#mediamute"
+        }
         //file:"../videos/5_SG.flv",
         //image:"videos/urbilog.png",
         //prefix:"player_",
@@ -47,21 +100,4 @@ $(document).ready(function() {
             }
         }
     });
-
-   var j;
-   $this.find("#mediatitlelinksinner").click(function(){
-	    var button = j%2;
-        j++;
-
-		 if(button == 0){
-			 console.log("playlist off");
-			 $this.find("#mediascrollwrapper").hide("fast");
-		 }
-		 else{
-			 console.log("playlist on");
-			 $("#mediatitlebar").show("slow");
-		 }
-
-	});
-
 });
