@@ -101,13 +101,9 @@ $(document).ready(function() {
 				}
 			}
 		});  
-console.log(event);
-	//~ var event = $("#medialist").find("#mediaplaypause");
-  //your code here
-		console.log($("#medialist").find("> div"));
-		alert("it's ok");
-		$this.find("#medialist").find("> div").click(function(){	
-			alert("je viens de cliquer sur une video");			
-		}).trigger(event);
+	//~ console.log(event);
+	//your code here
+	console.log($("#medialist").find("> div"));
+	alert("it's ok");
 	});
 });

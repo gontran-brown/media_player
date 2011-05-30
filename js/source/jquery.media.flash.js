@@ -72,7 +72,7 @@
         "mediaBuffering":"show",
         "mediaPaused":"hide",
         "mediaPlaying":"hide",
-        "mediaStopped":false,
+        "mediaStopped":true,
         "mediaComplete":false,
         "mediaMeta":false
       };
@@ -89,7 +89,8 @@
           id:settings.id,
           file:mediaFile.path,
           skin:settings.skin,
-          autostart:(settings.autostart || !settings.autoLoad)
+          autostart:false
+          //~ (settings.autostart || !settings.autoLoad)
         };
         if( mediaFile.stream ) {
           flashvars.stream = mediaFile.stream;
