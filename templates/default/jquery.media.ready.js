@@ -104,9 +104,9 @@ $(document).ready(function() {
 console.log(event);
 	//~ var event = $("#medialist").find("#mediaplaypause");
   //your code here
-		console.log($("> div"));
+		console.log($("#medialist").find("> div"));
 		alert("it's ok");
-		$this.find("#medialist").find("> div").click(function(){		
+		$this.find("#medialist").find("> div").click(function(){	
 			alert("je viens de cliquer sur une video");			
 		}).trigger(event);
 	});
