@@ -99,6 +99,12 @@ $(document).ready(function() {
                 }
             }
         }
-    });
-   
+    });  
+});
+$(window).load(function(){
+  //your code here
+	console.log($("#medialist").find("> div"));
+    $("#mediateaser").click(function(){
+		alert("je viens de cliquer sur une viedeo");
+	});
 });

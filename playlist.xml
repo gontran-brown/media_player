@@ -3,14 +3,14 @@
    <trackList>
 
       <track>
-         <location>../videos/test2.ogv</location>
+         <location>videos/test2.ogv</location>
          <creator>Gontran.Brown</creator>
          <title>ogv Example: Avion</title>
          <annotation>OGV Example.</annotation>
          <image>http://upload.wikimedia.org/wikipedia/commons/5/5f/BBB-Bunny.png</image>
       </track> 
       <track>
-         <location>Video.ogv</location>
+         <location>videos/Video.ogv</location>
          <creator>Gontran.Brown</creator>
          <title>ogv Example: bucher</title>
          <annotation>OGV Example.</annotation>
