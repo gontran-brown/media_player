@@ -834,7 +834,7 @@
             setTimeout( function() {
               _this.setVolume();
               _this.player.pauseMedia();
-              _this.settings.autostart = true;
+              _this.settings.autostart = false;//au depart a true
               _this.loaded = true;
             }, 100 );
           }

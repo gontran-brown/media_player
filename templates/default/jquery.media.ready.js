@@ -66,7 +66,8 @@ $(document).ready(function() {
 		var currentTime=0;
 		var event = jQuery.Event("logged");
 		console.log(event);
-		 event =		 $this.find("#mediaplaypause").click(function(){
+		$this.find("#mediaplaypause").click(function(){
+			console.log();
 			var $form_subtitle = $this.next("form#subtitle");
 			if ($form_subtitle.length == 0){
 				var $help = $this.next("div.help");
@@ -105,5 +106,20 @@ $(document).ready(function() {
 	//your code here
 	console.log($("#medialist").find("> div"));
 	alert("it's ok");
+	$this.find("#medialist").find("> div").click(function(){	
+			console.log("je viens de cliquer sur une video");
+			//~ console.log($("#medialist").find("> div").find("> div"));
+			//~ console.log($("#medialist").find("> div").find("> div").text().trim());
+			//~ 
+			$this.find("#medialist").each(function(){
+				console.log($("#medialist").find("> div").find("> div").text());
+				//~ if($("#medialist").find("> div").text().trim() =="mediatitle"){
+					//~ console.log("je suis dans le mediatitle");
+				//~ }	
+				//~ else
+				//~ console.log("non");
+			 });
+		});		
+		
 	});
 });

@@ -786,7 +786,7 @@
             setTimeout( function() {
               _this.setVolume();
               _this.player.pauseMedia();
-              _this.settings.autostart = true;
+              _this.settings.autostart = false;//au depart a true
               _this.loaded = true;
             }, 100 );
           }
@@ -998,6 +998,7 @@
           file:mediaFile.path,
           skin:settings.skin,
           autostart:(settings.autostart || !settings.autoLoad)
+          //~  au depart
         };
         if( mediaFile.stream ) {
           flashvars.stream = mediaFile.stream;
