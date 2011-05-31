@@ -107,9 +107,11 @@ $(document).ready(function() {
         $this.find("#medialist > div").click(function(){
             console.log("Voici le titre que vous avez sélectionné : '"+$(this).find("#mediatitle").text().trim()+"'");
 			//~ var titre = $(this).find("#mediatitle").text().trim();
-			$this.after('<form  method ="POST" action="generate_xml.php" enctype="multipart/form-data">'+
-                        '<input type="hidden" name="title" value="'+$(this).find("#mediatitle").text().trim()+'"></input></form>');
-       //~ console.log(titre);
+			$this.after('<form  method = "POST" action = "upload.php" enctype = "multipart/form-data">'+
+                        '<input id = "title" type="hidden" name ="title" value="'+$(this).find("#mediatitle").text().trim()+'"></input></form>');
+		   $("form:first").submit();
+		   
+				   
         });
     });
 });

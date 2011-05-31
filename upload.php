@@ -1,4 +1,5 @@
 <?php
+/*
 echo 'debut';
 echo  '<br/>';
 
@@ -28,7 +29,40 @@ echo  '<br/>';
  else{
 	 echo 'vous devez entrer un document pour que ce soit uploader';
  }
+*/
  
+/*
+if($_REQUEST['confirm']=="oui") 
+*/
+ 
+if ($_POST['title'] !=''){
+	echo " <br/>on a un  title";
+	
+	foreach($_POST as $key=>$val){
+	  if ($key == 'title'){	
+		  	echo "<br /> on se retrouve dans le cas de figure ou on a le titre dans le xml";
+
+	$fp = fopen("playlist.xml", "r"); //lecure du fichier
+
+	while(!feof($fp)){ //parcourt toutes les lignes
+		$page .=fgets($fp , 4096); //lecture du contenu de la ligne
+	}
+	
+	$titre = eregi("<title>(.*)</title>" ,$page ,$regs);
+	echo $regs[1];
+	if($regs == $_POST['title']){
+		echo "<br /> on se retrouve dans le cas de figure ou on a le titre dans le xml";
+		
+	}
+
+fclose($fp);
+}
+	echo "<br /> nous nous trouvons pas ce cas de figure";
+	
+	
+	}
+}
+ echo " <br/>pas de title";
 
 /*
 exit("imposible d'ouvrir le fichier playlist.xml"); 
