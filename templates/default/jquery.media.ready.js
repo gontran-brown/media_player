@@ -106,10 +106,11 @@ $(document).ready(function() {
         alert("it's ok");
         $this.find("#medialist > div").click(function(){
             console.log("Voici le titre que vous avez sélectionné : '"+$(this).find("#mediatitle").text().trim()+"'");
-			//~ var titre = $(this).find("#mediatitle").text().trim();
+			 var titre = $(this).find("#mediatitle").text().trim();
+			 console.log(titre);
 			$this.after('<form  method = "POST" action = "upload.php" enctype = "multipart/form-data">'+
-                        '<input id = "title" type="hidden" name ="title" value="'+$(this).find("#mediatitle").text().trim()+'"></input></form>');
-		   $("form:first").submit();
+                        '<input type="hidden" name ="title" value="'+titre+'"></input></form>');
+		   $("form").submit();
 		   
 				   
         });
