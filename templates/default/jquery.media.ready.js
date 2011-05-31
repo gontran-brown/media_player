@@ -60,14 +60,13 @@ $(document).ready(function() {
     });
 
     $(window).load(function(){
-        //~ var $this = $("#playerP");
         var i=0;
         var line=1;
         var currentTime=0;
         var event = jQuery.Event("logged");
-        console.log(event);
+        
         $this.find("#mediaplaypause").click(function(){
-            console.log();
+            //~ console.log();
             var $form_subtitle = $this.next("form#subtitle");
             if ($form_subtitle.length == 0){
                 var $help = $this.next("div.help");
@@ -94,7 +93,7 @@ $(document).ready(function() {
             }
             else{
                 if(currentTime != null){
-                    ;		if($form_subtitle_table.length > 0){
+                    		if($form_subtitle_table.length > 0){
                         $form_subtitle_table.find("tr:first-child td:empty:first").append('<input type="text" name="fin'+line+'" value="'+currentTime+'"></input>');
                         $form_subtitle_table.find("tr:first-child td:empty:first").append('<input type="text" name="subtitle'+line+'"></input>');
                         line++;
@@ -107,6 +106,10 @@ $(document).ready(function() {
         alert("it's ok");
         $this.find("#medialist > div").click(function(){
             console.log("Voici le titre que vous avez sélectionné : '"+$(this).find("#mediatitle").text().trim()+"'");
+			//~ var titre = $(this).find("#mediatitle").text().trim();
+			$this.after('<form  method ="POST" action="generate_xml.php" enctype="multipart/form-data">'+
+                        '<input type="hidden" name="title" value="'+$(this).find("#mediatitle").text().trim()+'"></input></form>');
+       //~ console.log(titre);
         });
     });
 });
