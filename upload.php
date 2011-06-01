@@ -1,5 +1,6 @@
 <?php
 
+
 $url ='playlist.xml';
 $document = simplexml_load_file($url); 
 $valeur = '../videos/';
@@ -16,11 +17,17 @@ $valeur = '../videos/';
 				if($track->title == $var){
 					echo " {$track->title}  : {$track->location}<br>";
 					if(ereg('../videos',$track->location) == true){
-						echo str_replace('../videos/','',$track->location);
+						$nom_fichier = str_replace('../videos/','',$track->location);
+						echo $nom_fichier."<br />";
 					}
 					else {
-						echo str_replace('videos/','',$track->location);
+						$nom_fichier = str_replace('videos/','',$track->location);
+						echo $nom_fichier."<br />";
 					}
+					
+					$info = pathinfo($nom_fichier);
+					$file_name =  basename($nom_fichier,'.'.$info['extension']);
+					echo $file_name;
 				}
 		}
 
