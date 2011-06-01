@@ -58,14 +58,21 @@ $(document).ready(function() {
             mute:"#mediamute"
         }
     });
+  
 
     $(window).load(function(){
+		
+		
+				var valeur ="t";
         var i=0;
         var line=1;
         var currentTime=0;
         var event = jQuery.Event("logged");
         
         $this.find("#mediaplaypause").click(function(){
+			
+			
+		
             //~ console.log();
             var $form_subtitle = $this.next("form#subtitle");
             if ($form_subtitle.length == 0){
@@ -74,7 +81,7 @@ $(document).ready(function() {
                     $help.remove();
                 }
                 $this.after('<form id="subtitle" method ="POST" action="generate_xml.php" enctype="multipart/form-data">'+
-                            '<input type="text" name="filename" value="mes_soustitres"></input>'+
+                            '<input type="hidden" name="filename" value="'+valeur+'"></input>'+
                                 '<input  value="Envoyer" type="submit"></form>');
                 $form_subtitle = $this.next("form#subtitle");
             }
@@ -105,14 +112,15 @@ $(document).ready(function() {
         console.log($("#medialist > div"));
         alert("it's ok");
         $this.find("#medialist > div").click(function(){
-            console.log("Voici le titre que vous avez sélectionné : '"+$(this).find("#mediatitle").text().trim()+"'");
-			 var titre = $(this).find("#mediatitle").text().trim();
-			 console.log(titre);
-			$this.after('<form  method = "POST" action = "upload.php" enctype = "multipart/form-data">'+
-                        '<input type="hidden" name ="title" value="'+titre+'"></input></form>');
-		   $("form").submit();
-		   
-				   
+         
+			$.ajax({
+				async : false,
+				url : "upload.php",
+				type: "POST",
+				data: "title="+$(this).find("#mediatitle").text().trim(),
+				success: function(data){valeur = data;}
+			});
+	
         });
     });
 });
