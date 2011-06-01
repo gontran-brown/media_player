@@ -1,9 +1,8 @@
 <?php
 
-
 $url ='playlist.xml';
 $document = simplexml_load_file($url); 
-
+$valeur = '../videos/';
  
 	if ($_POST['title'] !=''){
 		echo " <br/>on a un  title <br/>";
@@ -15,12 +14,19 @@ $document = simplexml_load_file($url);
 			foreach ($trackList->track as $track)
 				
 				if($track->title == $var){
-				  echo " {$track->title}  : {$track->location}<br>";
+					echo " {$track->title}  : {$track->location}<br>";
+					if(ereg('../videos',$track->location) == true){
+						echo str_replace('../videos/','',$track->location);
+					}
+					else {
+						echo str_replace('videos/','',$track->location);
+					}
 				}
-
 		}
-/*
 
+
+/*
+echo strstr($adresse,$arobase) 
 if (!empty($_POST['title'])){
     $currentVideo = $_POST['title'];
     echo "Notre video : ".$currentVideo."<br />";
