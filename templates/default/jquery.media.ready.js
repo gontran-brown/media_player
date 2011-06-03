@@ -74,16 +74,27 @@ $(document).ready(function() {
     var $media = $this.find("#player_mediatitlebar");
 	$media.find("#player_mediamaxbutton").click(function(){
 		console.log("open playlist");
-		 
+		 var file ;
 		 $this.after('<form id="upload" method ="POST" action ="upload.php" enctype="multipart/form-data">'+
-		 '<input type = "hidden" name ="MAX_FILE_SIZE" value = "900000000"/><input type="file" name ="document"></input><input type="submit" value = "Playlist"></form>');
+		 '<input type = "hidden" name ="MAX_FILE_SIZE" value = "900000000000"/>'+
+		  '<input type="file" name ="document"></input>'+
+		  //~ 
+		  //~ file = $this.find('input[name|="document"]').attr("value");
+		  //~ 
+		 //~ $("#upload").append('<input type = "hidden" name ="filename" value = "'+file+'"/>'+
+		'<input type="submit" value = "Playlist"></form>');
 		 		  //~ $this.mediaplayer.file = $this.find("input").attr("value"); ;
 		 		
 		});
-		function submit(){
-			 $this.mediaplayer.file = $this.find('input[name|="upload"]').attr("value");
-			 
-		}
+		 //~ function submit(){
+			 //~ console.log(file);
+			 //~ $this.mediaplayer.file = $this.find('input[name|="upload"]').attr("value");
+			 //~ <INPUT type="button" value="infos" onClick=javascript:popup("plan.htm") class="curs" > 
+			 //~ <SCRIPT language="JavaScript"> 
+//~ function popup(page) { 
+//~ window.open(page,'popup','width=400,height=400,toolbar=false,scrollbars=0'); 
+//~ } 
+		 //~ }
 		
 		 
 		 //~ $this.after('<form method ="post" enctype="multipart/form-data">'+
@@ -96,3 +107,4 @@ $(document).ready(function() {
 		//~ }
 });
 //~ fin du $(document).ready(function()
+//~ <input type ="button" calue ="info" onClick = "submit()">
