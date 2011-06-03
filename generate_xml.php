@@ -12,10 +12,9 @@ if (isset($_POST)){
 	  $data = file_get_contents($data);
 	}
 	if(strpos($_SERVER['HTTP_USER_AGENT'], "MSIE") !== false){
-	  header('Content-Disposition: attachment; filename="'.$filename.'"');
-          
+	  header('Content-Disposition: attachment; filename="'.$filename.'"');  
 	  header('Expires: 0');
-	  header('Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
+	  header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
 	  header('Content-Transfer-Encoding: binary');
 	  header('Content-Type: '.$content);
 	  header('Pragma: public');
@@ -27,7 +26,7 @@ if (isset($_POST)){
 	  header('Content-Type: '.$content);
 	  header('Expires: 0');
 	  header('Pragma: no-cache');
-	  header('Content-Length: '.filesize($data)); 
+	  header('Content-Length: '.strlen($data)); 
           
 	}
 	// Send file to browser, and terminate script to prevent corruption of data.
