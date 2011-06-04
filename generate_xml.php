@@ -57,36 +57,3 @@ if (isset($_POST)){
         downloader($xml, $_POST['filename'].".xml", "application/xml");
   }
 }
-
-if (isset($_POST['title'])){
-	echo " <br/>on a un  title";
-/*
-	foreach($_POST as $key=>$val){
-*/
-	  if ($key == 'title'){	
-		  	echo "<br /> on se retrouve dans le cas de figure ou on a le titre dans le xml";
-
-/*	$fp = fopen("playlist.xml", "r"); //lecure du fichier
-
-	while(!feof($fp)){ //parcourt toutes les lignes
-		$page .=fgets($fp , 4096); //lecture du contenu de la ligne
-	}
-	
-	$titre = eregi("<title>(.*)</title>" ,$page ,$regs);
-	echo $regs[1];
-*/
-/*
-	if($regs == $POST['title']){
-		echo "<br /> on se retrouve dans le cas de figure ou on a le titre dans le xml";
-		
-	}
-
-fclose($fp);*/
-}
-	echo "<br /> nous nous trouvons pas ce cas de figure";
-	
-	
-	//}
-}
- echo " <br/>pas de title";
-?>
