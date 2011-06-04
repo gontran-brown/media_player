@@ -62,7 +62,6 @@ $(document).ready(function() {
 
     $(window).load(function(){
 		
-		
 		var valeur ;
         var i=0;
         var line=1;
@@ -110,28 +109,31 @@ $(document).ready(function() {
         console.log($("#medialist > div"));
         alert("it's ok");
         $this.find("#medialist > div").click(function(){
-        
-         $("form#subtitle").remove();
-         console.log($(this).find("#mediatitle").text().trim());
-						
-			$.ajax({
-				async : false,
-				url : "upload.php",
-				type: "POST",
-				data: "title="+$(this).find("#mediatitle").text().trim(),
-				success: function(data){valeur = data;}
+			$("form#subtitle").remove();
+			//~ $dom.remove();
+			console.log($(this).find("#mediatitle").text().trim());
+							
+				$.ajax({
+					async : false,
+					url : "upload.php",
+					type: "POST",
+					data: "title="+$(this).find("#mediatitle").text().trim(),
+					success: function(data){valeur = data;}
+				});
+				
+				$.ajax({
+					async : false,
+					url : "load.php",
+					type: "POST",
+					data: "valeur="+valeur,
+					success: function(data){fichier = data;}
+				});
+				
+				 //~ console.log(fichier);
+				 //~ var $dom = 
+				 $("#playerP").after(fichier);
+				 //~ $dom.append(fichier);
+		
 			});
-			
-			$.ajax({
-				async : false,
-				url : "load.php",
-				type: "POST",
-				data: "valeur="+valeur,
-				success: function(data){fichier = data;}
-			});
-			
-			 console.log(fichier);
-	
-        });
     });
 });
