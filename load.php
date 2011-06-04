@@ -5,12 +5,26 @@
 		
 		$filename = './videos/'.$variable.'.xml';
 			if(file_exists($filename)){
+/*
 				$xmlDoc = new DOMDocument();
-				$xmlDoc->load($filename);
+				
 
 				$x = $xmlDoc->documentElement;
-				foreach ($x->childNodes AS $item)
-				  {
+*/				$xmlDoc->load($filename);
+				$xml = new simpleXMLElement($filename);
+				foreach ($xml->video[0] AS $item)
+				  {switch((string) $item[]){
+					case 'debut':
+					$debut = $item->debut;
+					break;
+					case 'fin':
+					$fin = $item->fin;
+					break;
+					case 'subtitle':
+					$subtitle = $item->subtitle;
+					break;
+					
+				  }
 				  print $item->nodeName . " = " . $item->nodeValue . "<br />";
 				  }
 /*
