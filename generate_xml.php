@@ -2,8 +2,7 @@
 if (isset($_POST)){
     if (isset($_POST['filename'])){
         $dom = new DOMDocument('1.0', 'UTF-8');
-        $dom->formatOuput = TRUE;
-        //$dom->normalizeDocument();
+        $dom->formatOuput = true;
 
         $video = $dom->createElement("video");
         $dom->appendChild($video);
@@ -27,7 +26,6 @@ if (isset($_POST)){
             }
         }
         $video->removeChild($soustitre);
-        $dom->save('test.xml');
-        echo $dom->saveXML();
+        $dom->save($_POST['filename'].'.xml');
     }
 }
