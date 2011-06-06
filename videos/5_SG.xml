@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <video>
-	<debut9>00:09</debut9>
-	<fin9>00:09</fin9>
-	<subtitle9>presente</subtitle9>
-	<debut7>00:03</debut7>
-	<fin7>00:03</fin7>
-	<subtitle7>logo</subtitle7>
+	<sous_titres1>
+		<debut>00:00</debut>
+		<fin>00:00</fin>
+		<subtitle>nnn</subtitle>
+	</sous_titres1>
+	<sous_titres2>
+		<debut>00:00</debut>
+		<fin>00:00</fin>
+		<subtitle>blablabla</subtitle>
+	</sous_titres2>
+	<sous_titres3>
+		<debut>00:00</debut>
+		<fin>00:00</fin>
+		<subtitle>nia nia nia</subtitle>
+	</sous_titres3>
 </video>

@@ -61,7 +61,7 @@ $(document).ready(function() {
   
 
     $(window).load(function(){
-		
+		var fichier ;
 		var valeur ;
         var i=0;
         var line=1;
@@ -110,6 +110,7 @@ $(document).ready(function() {
         alert("it's ok");
         $this.find("#medialist > div").click(function(){
 			$("form#subtitle").remove();
+			console.log(fichier);
 			//~ $dom.remove();
 			console.log($(this).find("#mediatitle").text().trim());
 							
@@ -120,18 +121,21 @@ $(document).ready(function() {
 					data: "title="+$(this).find("#mediatitle").text().trim(),
 					success: function(data){valeur = data;}
 				});
-				
+				console.log(valeur);
 				$.ajax({
 					async : false,
 					url : "load.php",
 					type: "POST",
 					data: "valeur="+valeur,
-					success: function(data){fichier = data;}
+					success:function(data){
+						$("form#subtitle").append(data);
+					}
+					
 				});
 				
-				 //~ console.log(fichier);
+				  console.log("apres lajax");
 				 //~ var $dom = 
-				 $("#playerP").after(fichier);
+				 //$("form#subtitle").append(fichier);
 				 //~ $dom.append(fichier);
 		
 			});
