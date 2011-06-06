@@ -4,6 +4,7 @@
 		
 		$variable = $_POST['valeur'];
 		
+
 		$filename = '../data/'.$variable.'.xml';
 			
 		if(file_exists($filename)){
@@ -15,6 +16,7 @@
 			echo $doc->saveXml();
 			//$dom = $doc->documentElement->getElementsByTagName("video";
 var_dump ($doc);
+
 /*
 var_dump ($dom);
 */
