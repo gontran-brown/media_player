@@ -26,6 +26,8 @@ if (isset($_POST)){
             }
         }
         $video->removeChild($soustitre);
+
         $dom->save($_POST['filename'].'.xml');
+
     }
 }
