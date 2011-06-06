@@ -36,23 +36,30 @@ if (isset($_POST)){
     
     // Create the rest of your XML Data...
     $xml = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\r\n";
-        $xml .= "<video>\r\n";
+    $xml .= "<video>\r\n";
 	
         $line = "";
+        
         foreach($_POST as $key=>$val){
-	  if ($key != 'filename'){
-	    if (preg_match("#subtitle\d+#", $key)){
-	      if (!empty($val)){
-		$line .= "\t<".$key.">".$val."</".$key.">\r\n";
-		$xml .= $line;
-	      }
-	      $line = "";
-	    }
-	    else{
-	      $line .= "\t<".$key.">".$val."</".$key.">\r\n";
-	    }
-	  }
-        }
+		$keys = ereg_replace("[0-9]","",$key);
+		if ($keys != 'filename'){
+			if (preg_match("#subtitle\d+#", $key)){
+				
+			 $xml.="\t<sous_titres>\r\n";
+			  if (!empty($val)){				
+				$line .= "\t\t<".$keys.">".$val."</".$keys.">\r\n";
+				$xml .= $line;$xml.="\t</sous_titres>\n";
+			  }
+			  $line = "";
+			   //$xml.="\t</sous_titres>\n";
+			}
+			else{
+				 
+			  $line .= "\t\t<".$keys.">".$val."</".$keys.">\r\n";
+			 
+			}
+		}
+    }       
         $xml .= "</video>";
         downloader($xml, $_POST['filename'].".xml", "application/xml");
   }
