@@ -7,11 +7,9 @@
 			if(file_exists($filename)){
 /*
 				$xmlDoc = new DOMDocument();
-				
-
 				$x = $xmlDoc->documentElement;
-*/				$xmlDoc->load($filename);
-				$xml = new simpleXMLElement($filename);
+				$xmlDoc->load($filename);
+*/				$xml = new simpleXMLElement($filename);
 				foreach ($xml->video[0] AS $item)
 				  {switch((string) $item[]){
 					case 'debut':
