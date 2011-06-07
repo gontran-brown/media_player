@@ -1,7 +1,7 @@
 <?php
-$url ='playlist.xml';
-$document = simplexml_load_file($url); 
-$valeur = '../videos/';
+	$url ='playlist.xml';
+	$document = simplexml_load_file($url); 
+	$valeur = '../videos/';
  
 	if ($_POST['title'] !=''){
 		//echo " <br/>on a un  title <br/>";

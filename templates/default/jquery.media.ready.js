@@ -91,7 +91,7 @@ $(document).ready(function() {
             $form_subtitle_table = $form_subtitle.find("table tbody");
             if(button == 0){
                 if(($form_subtitle_table.length == 0) && (currentTime != null)){
-                    $form_subtitle.prepend('<table><thead><tr><th>Temps début :</th><th>Temps fin :</th><th>Sous titre :</th></tr></thead><tbody><tr><td><input type="text" name="debut'+line+'" value="'+currentTime+'"></input></td><td></td><td></td></tr></tbody></table>');
+                    $("form#subtitle> table > thead").after('<tbody><tr><td><input type="text" name="debut'+line+'" value="'+currentTime+'"></input></td><td></td><td></td></tr></tbody>');
                 }
                 else{
                     $form_subtitle_table.prepend('<tr><td><input type="text" name="debut'+line+'" value="'+currentTime+'"></input></td><td></td><td></td></tr>');
@@ -107,15 +107,13 @@ $(document).ready(function() {
                 }
             }
         });
-
-        //console.log($("#medialist > div"));
-        alert("it's ok");
+        
+       alert("it's ok");
        $this.find("#medialist > div").click(function(){
-			
-			//console.log(fichier);
-			//~ $dom.remove();
-			//console.log($(this).find("#mediatitle").text().trim());
-							
+			var $form_subtitle = $this.next("form#subtitle");
+			$("form#subtitle > table").remove();
+			$form_subtitle.prepend('<table><thead><tr><th>Temps début :</th><th>Temps fin :</th><th>Sous titre :</th></tr></thead><tbody></tbody></table>');
+										
 				$.ajax({
 					async : false,
 					url : "upload.php",
@@ -124,7 +122,7 @@ $(document).ready(function() {
 					success: function(data){valeur = data;}
 				});
 				
-				console.log(valeur);
+				//console.log(valeur);
 				var dom ;
 				 $.ajax({
 					async : false,
@@ -132,23 +130,11 @@ $(document).ready(function() {
 					type: "POST",
 					data: "valeur="+valeur,
 					success:function(data){
-						dom = data;
-						 //~ $this.find("#mediaplaypause").after(data);
+						 dom = data;
+						$("form#subtitle > table > tbody").append(dom);
 					}
-					
 				});
-				var $form_subtitle = $this.next("form#subtitle");;
-				$form_subtitle.prepend('<table><thead><tr><th>Temps début :</th><th>Temps fin :</th><th>Sous titre :</th></tr></thead><tbody></tbody></table>');
-				
-				$("form#subtitle > table > tbody").replaceWith(dom);
-				 //~ $("form#subtitle > table > tbody").prepend(dom);
-				  //~ console.log(dom);
-				  //~ console.log(fichier);
-
-				 //~ var $dom = 
-				//~ $this.("form#subtitle").append(dom);
-				 //~ $dom.append(fichier);
-		
+			//$("form#subtitle > table > tbody").replaceWith(dom);
 			});
     });
 });
