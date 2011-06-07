@@ -17,10 +17,6 @@
 			//$dom = $doc->documentElement->getElementsByTagName("video";
 var_dump ($doc);
 
-/*
-var_dump ($dom);
-*/
-
 			$xpath = new DOMXpath($doc);
 			//echo "je suis ici \n";
 			var_dump ($xpath );
@@ -42,7 +38,7 @@ var_dump ($dom);
 				  echo $node->nodeValue. "\n";
 				  echo"<input type=\"text\" name=\"".$node."\" value=\"".$node->nodeValue."\"></input>";
 				}
-				* */
+				*/
 			  }
 			}
 			else 
@@ -54,6 +50,4 @@ var_dump ($dom);
 	/**/}
 	else
 	echo "je n'ai pas de valeur d'entre<br />";
-
-
 ?>

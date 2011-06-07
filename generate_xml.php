@@ -39,5 +39,6 @@ if (isset($_POST)){
         $saut = $dom->createTextNode("\n");
         $video->appendChild($saut);
         $dom->save($_POST['filename'].'.xml');
+
     }
 }
