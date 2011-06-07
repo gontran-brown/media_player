@@ -70,17 +70,19 @@ $(document).ready(function() {
         $this.find("#mediaplaypause").click(function(){
 			
 			//~ console.log();
-            var $form_subtitle = $this.next("form#subtitle");
+            var $form_subtitle = $this.find("form#subtitle");
             if($form_subtitle.length == 0){
                 var $help = $this.next("div.help");
                 if ($help.length > 0){
                     $help.remove();
                 }
                 console.log(valeur);
-                $this.after('<form id="subtitle" method ="POST" action="generate_xml.php" enctype="multipart/form-data">'+
-                            '<input type="hidden" name="filename" value="'+valeur+'"></input>'+
-                            '<input  value="Envoyer" type="submit"></form>');
-                $form_subtitle = $this.next("form#subtitle");
+                $("form#subtitle").append('<input type="hidden" name="filename" value="'+valeur+'"></input>');
+                            //~ '<input  value="Envoyer" type="submit">
+                //~ $this.after('<form id="subtitle" method ="POST" action="generate_xml.php" enctype="multipart/form-data">'+
+                            //~ '<input type="hidden" name="filename" value="'+valeur+'"></input>'+
+                            //~ '<input  value="Envoyer" type="submit"></form>');
+                 $form_subtitle = $this.next("form#subtitle");
             }
             var button = i%2;
             i++;
@@ -108,8 +110,8 @@ $(document).ready(function() {
 
         //console.log($("#medialist > div"));
         alert("it's ok");
-        $this.find("#medialist > div").click(function(){
-			//~ $("form#subtitle").remove();
+       $this.find("#medialist > div").click(function(){
+			
 			//console.log(fichier);
 			//~ $dom.remove();
 			//console.log($(this).find("#mediatitle").text().trim());
@@ -135,7 +137,11 @@ $(document).ready(function() {
 					}
 					
 				});
-				$("form#subtitle > table").replaceWith(dom);
+				var $form_subtitle = $this.next("form#subtitle");;
+				$form_subtitle.prepend('<table><thead><tr><th>Temps début :</th><th>Temps fin :</th><th>Sous titre :</th></tr></thead><tbody></tbody></table>');
+				
+				$("form#subtitle > table > tbody").replaceWith(dom);
+				 //~ $("form#subtitle > table > tbody").prepend(dom);
 				  //~ console.log(dom);
 				  //~ console.log(fichier);
 

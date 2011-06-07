@@ -14,3 +14,9 @@ pouvoir mettre toute les video dans le dossier videos(car les videos autres que 
 pour decortiquer une adress en php on utilise
 
 pathinfo(url)
+
+
+pouvoir faire des modifications sur le soustitre deja realisé
+
+pouvoir mettre dans l'ordre les sous-titres
+(WisyWing ou par ordre de timeline)

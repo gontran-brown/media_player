@@ -41,7 +41,7 @@ if (isset($_POST)){
     $line = "";
         
         foreach($_POST as $key=>$val){
-		$keys = ereg_replace("[0-9]","",$key);
+		$keys = ereg_replace("[0-9_]","",$key);
 		if ($keys != 'filename'){
 			if (preg_match("#subtitle\d+#", $key)){
 				

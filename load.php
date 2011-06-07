@@ -19,22 +19,22 @@
 			$elements = $xpath->query("sous_titres");
 			
 			if (!is_null($elements)) {
-				
-
+				$i=11;
 			  foreach ($elements as $element) {
-
+				
 				$name =$element->getElementsByTagName("debut")->item(0);
 				
 				$valeur = $element->getElementsByTagName("debut")->item(0)->nodeValue; 
 				$vfin = $element->getElementsByTagName("fin")->item(0)->nodeValue; 
 				$vsub =  $element->getElementsByTagName("subtitle")->item(0)->nodeValue; 
 				
-				$nodes .="<input type=\"text\" name=\"debut\" value=\"";
-				$nodes .= $valeur."\"></input>";
-				$nodes .="<input type=\"text\" name=\"fin\" value=\"";
-				$nodes .= $vfin."\"></input>";
-				$nodes .="<input type=\"text\" name=\"subtitle\"value=\"";
-				$nodes .= $vsub."\"></input><br/>";
+				$nodes .="<tr><td><input type=\"text\" name=\"debut".$i."\" value=\"";
+				$nodes .= $valeur."\"></input></td>";
+				$nodes .="<td><input type=\"text\" name=\"fin".$i."\" value=\"";
+				$nodes .= $vfin."\"></input></td>";
+				$nodes .="<td><input type=\"text\" name=\"subtitle".$i."\"value=\"";
+				$nodes .= $vsub."\"></input></td></tr><br/>";
+				$i++;
 			  }
 			  echo $nodes;
 			}
@@ -42,7 +42,9 @@
 			echo "elements vide\n";
 		}
 		else{
+/*
 				print "Le fichier $filename n'existe pas";
+*/
 		}
 	}
 	else
