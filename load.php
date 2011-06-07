@@ -4,7 +4,6 @@
 		
 		$variable = $_POST['valeur'];
 		
-
 		$filename = '../data/'.$variable.'.xml';
 			
 		if(file_exists($filename)){
@@ -13,33 +12,31 @@
 			$doc = new DOMDocument();
 		
 			$doc->load($filename);
-			echo $doc->saveXml();
-			//$dom = $doc->documentElement->getElementsByTagName("video";
-var_dump ($doc);
+
 
 			$xpath = new DOMXpath($doc);
-			//echo "je suis ici \n";
-			var_dump ($xpath );
+
 			$elements = $xpath->query("sous_titres");
 			
-			//echo "le premier noeud".$elemennts->childNodes."\n";
-			//echo "apres laffectation des elements avec xpath\n";
 			if (!is_null($elements)) {
 				
-				echo "je ne suis pas nul\n";
-				echo $elements->length ."\n";
+
 			  foreach ($elements as $element) {
-				  echo "entre dans la boucle foreach";
-				echo "<br/>[". $element->nodeName. "]";
-				echo $element->getElementsByTagName("debut")->item(0)->nodeValue; 
-				/*
-				$nodes = $element->childNodes;
-				foreach ($nodes as $node){
-				  echo $node->nodeValue. "\n";
-				  echo"<input type=\"text\" name=\"".$node."\" value=\"".$node->nodeValue."\"></input>";
-				}
-				*/
+
+				$name =$element->getElementsByTagName("debut")->item(0);
+				
+				$valeur = $element->getElementsByTagName("debut")->item(0)->nodeValue; 
+				$vfin = $element->getElementsByTagName("fin")->item(0)->nodeValue; 
+				$vsub =  $element->getElementsByTagName("subtitle")->item(0)->nodeValue; 
+				
+				$nodes .="<input type=\"text\" name=\"debut\" value=\"";
+				$nodes .= $valeur."\"></input>";
+				$nodes .="<input type=\"text\" name=\"fin\" value=\"";
+				$nodes .= $vfin."\"></input>";
+				$nodes .="<input type=\"text\" name=\"subtitle\"value=\"";
+				$nodes .= $vsub."\"></input><br/>";
 			  }
+			  echo $nodes;
 			}
 			else 
 			echo "elements vide\n";
@@ -47,7 +44,9 @@ var_dump ($doc);
 		else{
 				print "Le fichier $filename n'existe pas";
 		}
-	/**/}
+	}
 	else
 	echo "je n'ai pas de valeur d'entre<br />";
+
+
 ?>

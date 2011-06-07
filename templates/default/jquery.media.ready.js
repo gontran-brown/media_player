@@ -106,13 +106,13 @@ $(document).ready(function() {
             }
         });
 
-        console.log($("#medialist > div"));
+        //console.log($("#medialist > div"));
         alert("it's ok");
         $this.find("#medialist > div").click(function(){
-			$("form#subtitle").remove();
-			console.log(fichier);
+			//~ $("form#subtitle").remove();
+			//console.log(fichier);
 			//~ $dom.remove();
-			console.log($(this).find("#mediatitle").text().trim());
+			//console.log($(this).find("#mediatitle").text().trim());
 							
 				$.ajax({
 					async : false,
@@ -121,21 +121,26 @@ $(document).ready(function() {
 					data: "title="+$(this).find("#mediatitle").text().trim(),
 					success: function(data){valeur = data;}
 				});
+				
 				console.log(valeur);
-				$.ajax({
+				var dom ;
+				 $.ajax({
 					async : false,
 					url : "load.php",
 					type: "POST",
 					data: "valeur="+valeur,
 					success:function(data){
-						$("form#subtitle").append(data);
+						dom = data;
+						 //~ $this.find("#mediaplaypause").after(data);
 					}
 					
 				});
-				
-				  console.log("apres lajax");
+				$("form#subtitle > table").replaceWith(dom);
+				  //~ console.log(dom);
+				  //~ console.log(fichier);
+
 				 //~ var $dom = 
-				 //$("form#subtitle").append(fichier);
+				//~ $this.("form#subtitle").append(dom);
 				 //~ $dom.append(fichier);
 		
 			});
