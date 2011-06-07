@@ -21,13 +21,13 @@ if (isset($_POST)){
                         $video->removeChild($soustitre);
                     }
                     $soustitre = $dom->createElement("sous_titres");
-                    $video->appendChild($soustitre);
+                    //$video->appendChild($soustitre);
+                    $node = $soustitre->getElementsByTagName('debut')->item(0);
+                    echo "le node".$node;
                 }
             }
         }
         $video->removeChild($soustitre);
-
         $dom->save($_POST['filename'].'.xml');
-
     }
 }
