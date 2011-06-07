@@ -18,5 +18,6 @@ pathinfo(url)
 
 pouvoir faire des modifications sur le soustitre deja realisé
 
-pouvoir mettre dans l'ordre les sous-titres
+pouvoir mettre dans l'ordre les sous-titres et pouvoir les supprimer
 (WisyWing ou par ordre de timeline)
+
