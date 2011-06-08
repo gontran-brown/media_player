@@ -11,16 +11,20 @@
 		
 			$doc->load($filename);
 
+		
 
 			$xpath = new DOMXpath($doc);
 
 			$elements = $xpath->query("sous_titres");
 			
+			
 			if(!is_null($elements)){
 				$i=11;
 				foreach ($elements as $element){
 	
-/*				$name =$element->getElementsByTagName("debut")->item(0);
+/*		DataRow row = listRow[indice];
+nodeBem.InnerXml = row["ger"];
+* 		$name =$element->getElementsByTagName("debut")->item(0);
 					if($element->nextSibling->getElementsByTagName("debut") < $name){
 						$temporaire = $name;
 						$name = $element->nextSibling->getElementsByTagName("debut");
