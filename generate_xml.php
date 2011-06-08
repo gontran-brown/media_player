@@ -2,23 +2,25 @@
 
 if (isset($_POST)){
 	if(isset($_POST['filename'])){
-	 
+
 		$xml = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\r\n";
 		$xml .= "<video>\r\n";
-	
+
 		$line = "";
-		$array = array();
-		
-		foreach($_POST as $keys){
-			 $array[] = $keys;
+		$array = $_POST;
+
+		foreach($array as $keys){
+            echo $keys;
+        }
 /*
+			 $array[] = $keys;
 			foreach($keys as $val){
 				$arrray[$keys][]= $keys=>$val;
 			}
-*/
+
 		}
-			  		  
-		foreach($array as $keys){  
+
+		foreach($array as $keys){
 			$xml.="\t<sous_titres>\r\n";
 			if ($array[$keys] == 'debut'){
 			$line .= "\t\t<debut>".$array[$keys]."</debut>\r\n";
@@ -28,22 +30,23 @@ if (isset($_POST)){
 			}
 			if($keys == 'subtitle'){
 				$line .= "\t\t<subtitle>".$arr[$keys]."</subtitle>\r\n";
-				
+
 			}
 			$xml .= $line;
 			$xml.="\t</sous_titres>\n";
-			
-      }   
+
+      }
+*/
 /*
-			  
+
 		foreach($_POST as $key=>$val){
 			$size = $_POST->elementCount;
 			echo $size;
 			$keys = ereg_replace("[0-9_]","",$key);
-	
+
 */
 			//$array = array($key=>$val);
-			
+
 /*
 			for($i = 0; $i <$size ; $i++){
 			foreach($keys as $val){
@@ -64,9 +67,9 @@ if (isset($_POST)){
 						$array[$i+1]=$keys[$i+1]=>$val;
 						$array[$i+2]=$keys[$i+2]=>$val;
 	*/
-					
+
 			//}
-			
+
 
 
 	/*		for($i = 0; $i<($size/3); $i++){
@@ -97,7 +100,7 @@ if (isset($_POST)){
 						}
 	*/
 					//}
-				 
+
 		$xml .= "</video>";
 		//echo $xml;
 		file_put_contents("/var/www/html/data/".$_POST['filename'].".xml", $xml);
