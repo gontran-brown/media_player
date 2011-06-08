@@ -109,6 +109,7 @@ $(document).ready(function() {
         });
         
        alert("it's ok");
+       
        $this.find("#medialist > div").click(function(){
 			var $form_subtitle = $this.next("form#subtitle");
 			$("form#subtitle > table").remove();
@@ -136,5 +137,7 @@ $(document).ready(function() {
 				});
 			//$("form#subtitle > table > tbody").replaceWith(dom);
 			});
+			
+		$this.find("#mediaplay").unbind('click');
     });
 });
