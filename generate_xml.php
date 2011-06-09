@@ -1,14 +1,15 @@
 <?php
 if (isset($_POST)){
+	//echo "jentre dans la boucle j'existe";
 	if(isset($_POST['filename'])){
 	 
 		$xml = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\r\n";
 		$xml .= "<video>\r\n";
-	
+		$arr = array();
 		$line = "";
 		$array = $_POST;
-	  		  
 		foreach($array as $key=>$val){  
+			//echo "dans la boucle foreach <br/>";
 			$keys = ereg_replace("[0-9_]","",$key);
 			
 			if ($keys == 'debut'){
@@ -25,16 +26,31 @@ if (isset($_POST)){
 						$line .= "\t</sous_titres>\n";
 						if (empty($val)){
 							$line = "";
-						}
+						}				
 						$xml.= $line;
+						$arr = $line;	
+						//echo $arr;							
 					}
 				}
 			}
+			
 		}
-				 
-		$xml .= "</video>";
-		file_put_contents($_POST['filename'].".xml", $xml);
-	  }
+		foreach($arr as $k=>$v){  
+			foreach($k as $v=>$va){
+			echo $v. ":".$va."<br/>";
+			}
+		}
+		$xml.= "</video>";
+/*
+		$arr = array($xml);
+*/
+		print_r ($arr);
+		
+		file_put_contents("/var/www/html/data/".$_POST['filename'].".xml", $xml);
+		
+		}
+
 	}
 	echo"je suis ici";
 ?>
+	
