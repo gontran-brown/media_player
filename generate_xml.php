@@ -12,7 +12,7 @@ if (isset($_POST)){
 			$keys = ereg_replace("[0-9_]","",$key);
 			
 			if ($keys == 'debut'){
-				$xml.="\t<sous_titres>\r\n";
+				$line.="\t<sous_titres>\r\n";
 				$line .= "\t\t<debut>".$val."</debut>\r\n";
 			}
 			else{
@@ -22,19 +22,19 @@ if (isset($_POST)){
 				else{
 					if($keys == 'subtitle'){
 						$line .= "\t\t<subtitle>".$val."</subtitle>\r\n";
-						$xml .= $line;
-						$xml.="\t</sous_titres>\n";
+						$line .= "\t</sous_titres>\n";
+						if (empty($val)){
+							$line = "";
+						}
+						$xml.= $line;
 					}
-					$line = "";
 				}
 			}
 		}
 				 
 		$xml .= "</video>";
-		
-		file_put_contents("/var/www/html/data/".$_POST['filename'].".xml", $xml);
+		file_put_contents($_POST['filename'].".xml", $xml);
 	  }
-
 	}
 	echo"je suis ici";
 ?>
