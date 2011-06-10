@@ -14,3 +14,74 @@ pouvoir mettre toute les video dans le dossier videos(car les videos autres que 
 pour decortiquer une adress en php on utilise
 
 pathinfo(url)
+
+<?php
+if (isset($_POST)){
+	//echo "jentre dans la boucle j'existe";
+	if(isset($_POST['filename'])){
+	 
+		$xml = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\r\n";
+		$xml .= "<video>\r\n";
+/*
+		$arr = array();
+*/
+		$line = "";
+		$array = $_POST;
+		print_r($array);
+		foreach($array as $key=>$val){  
+			
+			if ($key=='debut')
+				echo "debut :".$key."<br/>";
+			else
+			   if($key=='fin')
+					echo "fin :".$key."<br/>";
+				else 
+					if ($key=='str')
+					echo "str :".$key."<br/>";
+		
+		}
+		foreach($array as $key=>$val){  
+			//echo "dans la boucle foreach <br/>";
+			$keys = ereg_replace("[0-9_]","",$key);
+			
+			if ($keys == 'debut'){
+				$line.="\t<sous_titres>\r\n";
+				$line .= "\t\t<debut>".$val."</debut>\r\n";
+			}
+			else{
+				if($keys == 'fin'){
+						$line .= "\t\t<fin>".$val."</fin>\r\n";
+				}
+				else{
+					if($keys == 'subtitle'){
+						$line .= "\t\t<subtitle>".$val."</subtitle>\r\n";
+						$line .= "\t</sous_titres>\n";
+						if (empty($val)){
+							$line = "";
+						}				
+						$xml.= $line;
+						$arr = array($line);
+						print_r($arr);	
+						//echo $arr;							
+					}
+				}
+			}
+			
+		}
+
+		$xml.= "</video>";
+/*
+		print_r($arr);
+*/
+		file_put_contents("/var/www/html/data/".$_POST['filename'].".xml", $xml);
+		
+		}
+	}
+/*
+	$page = include('minima.html');
+*/
+/*
+	header($page);
+*/
+	echo"je suis ici";
+?>
