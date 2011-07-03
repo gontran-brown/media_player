@@ -1,0 +1,121 @@
+Jour1
+
+rechercher les outils uties pour developper l'application
+		QT/Jquery
+		(utilisation de xml/javascript/cpp/DOM
+
+http://erwy.developpez.com/tutoriels/xml/modelisation-xml-choix-structures-pour-representation-donnees/#L1 # cours de XML
+
+
+http://www.codes-sources.com/r/global.aspx?r=xml
+
+http://www.csharpfr.com/codes/BASE-DONNEES-XML_50881.aspx #base de donnée avec xml
+
+http://www.csharpfr.com/codes/PARCOURS-DOCUMENT-XML-AIDE-DOM_11524.aspx #parcours d'un document xml avec DOM
+
+http://www.csharpfr.com/codes/PARSER-NODE-XML-ALTERNATIF_46403.aspx #parser de node xml alternatif
+
+Jour2
+
+Recherche des bouts de code pour commencer à faire les fonctions de "listenneur/action"
+widgets || les signaux/slots
+
+inspiration dans les sites codes-sources pour les horloge/calculatrice
+pour quand on clicked() on a une actions d'ecoute et d'action!!
+
+
+
+11 avril
+
+recherche de l'integration du formulaire(a proprement parler) dans la fenetre MainWindow
+
+des difficulter à traitter ce passage
+car le formulaire (apparait sans les bouttons valider/annuler) dans une fenetre secondaire et la MainWindow apparait sur le dessus vide et de grande taille
+
+quand on ferme la MainWindow ou la fenetre formulaire ceci ne provoque pas le kill de la fenetre fille.
+deduit que les 2 fenetre sont independante.
+
+quand le programme décide de se lancer je me retrouve devant laffichage du "pop up" qui devrait apparaitre dans le cas ou je desire valider sans avoir entrer de phrase.
+
+19 avril
+
+reussi a recuperer les donnees du formulaire
+
+les enregistrer sur un fichier exterieur(on ne peux pas y faire de modif il ecrase le tout
+(on peut l'enregistrer sous le format que l'on souhaite)
+
+il faudrait  pouvoir recuperer les information dans ce fichier et les enregistrer dans un fichier xml approprié
+
+pourvoir enregistrer le tout sans ecrassement das le fichier exterieur
+
+sinon a chaque enregistrement dans "phrases sous-titres" , tout de suite le convertir en format xml dans un autre fichier(demadne trop de temp de travail)
+
+26 avril
+
+dans une QwebView importer la video
+
+et mettre le player "au dessus" du player du client
+le playeur a les "commande superuser"
+un volet(caché) pour y mettre les sous titres
+
+decoder le code html pour trouver quel player est present!!
+
+11 mai
+
+creer en jQuery un tableau dynamique en fonction des clic des input btn-play/btn-pause
+le tableau doit etre composer de 3 chanps : temps debut | temps fin |et le sous_titre
+
+sous_titres qui peuvent etre decidé a etre "édité" au moment de la creation des ligne du tableau ou apres tout les reception de temps
+
+au final on devrai trouver un bouton qui transforme le tout en fichier xml grace a la fonction (passer du DOM et XML)
+
+jour 3
+
+telechargement des different outils necessaire pour le codage du projet
+
+initiation a code de c++ avec QT
+(un fichier.h // l'entete
+un ficher.cpp//fichier de declaration des classes
+un fichier.o
+un fichier.pro //pour le lancement
+un fichiermain.cpp// declaration du main
+un fichier.ui // l'interface graphique
+
+
+dans le fichier.h on y fait figurer les decalrations de fonction que nous utiliserons dans le ficheir.cpp
+namespace Ui{ma class (sans le .h)}
+
+dans le fichier.cpp ne pas oublier les include des fichier.h
+
+
+
+recuperation du media player
+	explication de la demande
+			accomplir un formulaire de gestion des time et 				pouvoir y faire figurer les traittement de 				text	(en xml)
+
+
+
+
+a réaliser
+
+modifier la taille
+verifier que le texte ne se retrouve pas a l'exterieur de lecran
+verifer que le texte ne prenne pas tout l'ecran
+	sinon le partager sur les differente image au risque d'obtenir 		décalage entre son et image.
+#http://www.javascriptfr.com/codes/AJUSTER-POLICE-CONTENANT_52350.aspx#
+
+la position
+utiliser un "formulaire" pour les position x : avec un + -
+								  y : avec un + -
+
+les courleurs
+faire un formulaire de choix de couleur(pallette de couleur ,ou menu deroulant)
+
+réaliser une minuterie pour laisser un temps suffisement long de lecture.
+
+verifier quil ne figure  pas de sous titre au depart (sous titres forcé) si c'est la cas soit rediriger les sous titres forcé sur une autre posiition
+soit nos propre sous titre
+
+vérifier que la couleur de fond ne dérange pas la lecture(prévoir un changement de couleur à ce moment)
+
+
